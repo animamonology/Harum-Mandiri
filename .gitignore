@@ -1,0 +1,20 @@
+.DS_Store
+.vercel
+node_modules
+_src/
+.thumbnail
+*.dc.html.bak
+
+# sandbox-mounted host files, not part of the project
+.bash_profile
+.bashrc
+.gitconfig
+.gitmodules
+.idea
+.mcp.json
+.profile
+.ripgreprc
+.vscode
+.zprofile
+.zshrc
+.claude/

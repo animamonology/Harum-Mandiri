@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#0E0D0B;color:#F3EEE5;font-family:'Barlow',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#F3EEE5;text-decoration:none}
+a:hover{color:#E2A13B}
+::selection{background:#E2A13B;color:#0E0D0B}
+</style>
+</helmet>
+<div style="background:#0E0D0B;min-height:100vh;overflow-x:hidden">
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:20;background:linear-gradient(to bottom, rgba(14,13,11,0.7), rgba(14,13,11,0))">
+<div style="max-width:1440px;margin:0 auto;padding:22px clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap">
+<a href="#top" style="display:flex;align-items:baseline;gap:12px;white-space:nowrap">
+<span style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:21px;letter-spacing:0.18em;text-transform:uppercase">Harum Mandiri</span>
+<span style="font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#A39A8C">since 1970</span>
+</a>
+<nav style="display:flex;align-items:center;gap:clamp(14px,2vw,32px);flex-wrap:wrap;font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap">
+<a href="#story">Our story</a>
+<a href="#brands">Brands</a>
+<a href="#promise">How we work</a>
+<a href="#areas">Where we deliver</a>
+<a href="#contact" style="padding:10px 18px;border:1px solid #F3EEE5" style-hover="background:#F3EEE5;color:#0E0D0B">Talk to us</a>
+</nav>
+</div>
+</header>
+
+<main id="top">
+
+<section data-screen-label="Hero" style="position:relative;min-height:100vh;display:flex;align-items:flex-end">
+<div style="position:absolute;inset:0">
+<image-slot id="hero-bg" shape="rect" src="./assets/warehouse.png" placeholder="Full-bleed photo: warehouse or trucks"></image-slot>
+</div>
+<div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top, rgba(14,13,11,0.92) 0%, rgba(14,13,11,0.55) 45%, rgba(14,13,11,0.25) 100%)"></div>
+<div style="position:relative;pointer-events:none;width:100%;max-width:1440px;margin:0 auto;padding:210px clamp(20px,4vw,56px) clamp(56px,8vh,96px);box-sizing:border-box">
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#E2A13B;white-space:nowrap">Food &amp; snacks distributor · Jakarta Selatan</div>
+<h1 style="margin:20px 0 0;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(40px,5.6vw,84px);line-height:1;letter-spacing:0.01em;text-transform:uppercase;max-width:16ch;text-wrap:balance">Bringing Indonesia’s favourite biscuits to every shelf in Jakarta.</h1>
+<p style="margin:26px 0 0;font-size:clamp(16px,1.3vw,18px);line-height:1.65;color:#DAD3C7;max-width:52ch;text-wrap:pretty">We started in 1970, when Khong Guan Biscuit first arrived in Indonesia. More than fifty years later, our salesmen still visit the same warungs and supermarkets every week, and our trucks still leave the warehouse every morning.</p>
+<div style="margin-top:36px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;pointer-events:auto">
+<a href="#contact" style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.16em;text-transform:uppercase;padding:18px 34px;border:2px solid #E2A13B;background:#E2A13B;color:#0E0D0B;white-space:nowrap;transition:all .25s" style-hover="background:#F3EEE5;border-color:#F3EEE5;color:#0E0D0B">Become a customer</a>
+<a href="#brands" style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.16em;text-transform:uppercase;padding:18px 34px;border:2px solid rgba(243,238,229,0.35);white-space:nowrap;transition:all .25s" style-hover="border-color:#F3EEE5;color:#F3EEE5">See the brands we carry</a>
+</div>
+<div style="margin-top:56px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#A39A8C">
+<span>Our warehouse, ready for the morning routes.</span>
+<span>Est. 1970</span>
+</div>
+</div>
+</section>
+
+<section data-screen-label="At a glance" style="border-top:1px solid rgba(243,238,229,0.14);border-bottom:1px solid rgba(243,238,229,0.14)">
+<div style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
+<div style="padding:44px 28px 44px 0">
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(44px,4.4vw,64px);line-height:1;text-transform:uppercase">56 years</div>
+<div style="margin-top:12px;font-size:12px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;line-height:1.6;color:#A39A8C;max-width:26ch">of serving Jakarta, from one warehouse to five.</div>
+</div>
+<div style="padding:44px 28px 44px 0">
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(44px,4.4vw,64px);line-height:1">4,350</div>
+<div style="margin-top:12px;font-size:12px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;line-height:1.6;color:#A39A8C;max-width:26ch">shops and supermarkets we deliver to.</div>
+</div>
+<div style="padding:44px 28px 44px 0">
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(44px,4.4vw,64px);line-height:1;text-transform:uppercase">55 trucks</div>
+<div style="margin-top:12px;font-size:12px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;line-height:1.6;color:#A39A8C;max-width:26ch">on the road across Greater Jakarta.</div>
+</div>
+<div style="padding:44px 28px 44px 0">
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(44px,4.4vw,64px);line-height:1;text-transform:uppercase">3 days</div>
+<div style="margin-top:12px;font-size:12px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;line-height:1.6;color:#A39A8C;max-width:26ch">at most, from your order to your shelf.</div>
+</div>
+</div>
+</section>
+
+<section id="story" data-screen-label="Our story" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr))">
+<div style="position:relative;min-height:min(100vh,860px);background:#181613">
+<div style="position:absolute;inset:0">
+<image-slot id="story-team" shape="rect" placeholder="Photo of the team or founders"></image-slot>
+</div>
+</div>
+<div style="padding:clamp(64px,9vw,128px) clamp(20px,4vw,56px)">
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#E2A13B">Our story</div>
+<h2 style="margin:18px 0 0;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(36px,4vw,56px);line-height:1.02;text-transform:uppercase;text-wrap:balance">It started with a biscuit tin.</h2>
+<p style="margin:22px 0 0;font-size:17px;line-height:1.7;color:#C9C1B4;max-width:50ch;text-wrap:pretty">Our company was established in 1970 in the name of CV. Harum Manis, when Khong Guan Biscuit first arrived in Indonesia. We were appointed to be a distributor for modern and traditional trade in Jakarta area. Since then, we have become food and snacks distributor.</p>
+<div style="margin-top:48px;border-top:1px solid rgba(243,238,229,0.18)">
+<sc-for list="{{ milestones }}" as="m" hint-placeholder-count="6">
+<div style="display:grid;grid-template-columns:minmax(64px,96px) minmax(0,1fr);gap:20px;padding:22px 0;border-bottom:1px solid rgba(243,238,229,0.12)">
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:24px;line-height:1.1;color:#E2A13B">{{ m.year }}</div>
+<div>
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;line-height:1.4">{{ m.title }}</div>
+<div style="margin-top:6px;font-size:15px;line-height:1.6;color:#A39A8C;max-width:46ch">{{ m.detail }}</div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="brands" data-screen-label="Brands" style="border-top:1px solid rgba(243,238,229,0.14)">
+<div style="max-width:1440px;margin:0 auto;padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px)">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px clamp(48px,7vw,104px);align-items:end">
+<div>
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#E2A13B">Brands we carry</div>
+<h2 style="margin:18px 0 0;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(36px,4vw,56px);line-height:1.02;text-transform:uppercase;max-width:18ch;text-wrap:balance">Thirteen makers trust us with their snacks.</h2>
+</div>
+<p style="margin:0;font-size:17px;line-height:1.65;color:#C9C1B4;max-width:44ch">From biscuit tins to seaweed snacks, these are the companies whose products ride on our trucks every day.</p>
+</div>
+<sc-if value="{{ showProducts }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:2px">
+<div style="background:#F3EEE5;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:32px;box-sizing:border-box">
+<img src="./assets/product-cocon.png" alt="Cocon cone snacks" style="max-width:100%;max-height:100%;object-fit:contain">
+</div>
+<div style="background:#F3EEE5;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:32px;box-sizing:border-box">
+<img src="./assets/product-lazery.png" alt="Lazery yogurt candy" style="max-width:100%;max-height:100%;object-fit:contain">
+</div>
+<div style="background:#F3EEE5;aspect-ratio:4/3;overflow:hidden">
+<img src="./assets/product-noriboom.png" alt="Noriboom seaweed snack" style="width:100%;height:100%;object-fit:cover;display:block">
+</div>
+</div>
+</sc-if>
+<div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));column-gap:48px;border-top:1px solid rgba(243,238,229,0.18)">
+<sc-for list="{{ principals }}" as="p" hint-placeholder-count="13">
+<div style="display:flex;gap:16px;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(243,238,229,0.12)">
+<span style="font-size:12px;letter-spacing:0.1em;color:#6F675C;min-width:22px;font-variant-numeric:tabular-nums">{{ p.n }}</span>
+<span style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;line-height:1.4">{{ p.name }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="promise" data-screen-label="How we work" style="position:relative;min-height:100vh;display:flex;align-items:flex-end">
+<div style="position:absolute;inset:0;background:#181613">
+<image-slot id="promise-bg" shape="rect" placeholder="Full-bleed photo: truck on the road or salesman in a shop"></image-slot>
+</div>
+<div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top, rgba(14,13,11,0.95) 0%, rgba(14,13,11,0.6) 50%, rgba(14,13,11,0.2) 100%)"></div>
+<div style="position:relative;pointer-events:none;width:100%;max-width:1440px;margin:0 auto;padding:210px clamp(20px,4vw,56px) clamp(56px,8vh,96px);box-sizing:border-box">
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#E2A13B">How we work</div>
+<h2 style="margin:18px 0 0;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(36px,4.4vw,64px);line-height:1.02;text-transform:uppercase;max-width:18ch;text-wrap:balance">What every shop owner can count on.</h2>
+<div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:36px">
+<div style="border-top:2px solid #F3EEE5;padding-top:20px">
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.16em;color:#E2A13B">01</div>
+<div style="margin-top:20px;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:20px;letter-spacing:0.04em;text-transform:uppercase;line-height:1.2">A salesman who knows your shop</div>
+<p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#C9C1B4">Provides salesman for modern and traditional market.</p>
+</div>
+<div style="border-top:2px solid #F3EEE5;padding-top:20px">
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.16em;color:#E2A13B">02</div>
+<div style="margin-top:20px;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:20px;letter-spacing:0.04em;text-transform:uppercase;line-height:1.2">On your shelf within three days</div>
+<p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#C9C1B4">3x24 hour maximum delivery to customer.</p>
+</div>
+<div style="border-top:2px solid #F3EEE5;padding-top:20px">
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.16em;color:#E2A13B">03</div>
+<div style="margin-top:20px;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:20px;letter-spacing:0.04em;text-transform:uppercase;line-height:1.2">Always the freshest stock first</div>
+<p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#C9C1B4">Assure FIFO (First in First out) of our products.</p>
+</div>
+<div style="border-top:2px solid #F3EEE5;padding-top:20px">
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.16em;color:#E2A13B">04</div>
+<div style="margin-top:20px;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:20px;letter-spacing:0.04em;text-transform:uppercase;line-height:1.2">Delivery from Rp 150.000</div>
+<p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#C9C1B4">Minimum purchase of Rp 150,000.00 within Jakarta, Tangerang, Depok, Bogor, Sukabumi, Cianjur Area.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="areas" data-screen-label="Where we deliver" style="border-top:1px solid rgba(243,238,229,0.14)">
+<div style="max-width:1440px;margin:0 auto;padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px)">
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#E2A13B">Where we deliver</div>
+<h2 style="margin:18px 0 0;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(36px,4vw,56px);line-height:1.02;text-transform:uppercase;max-width:20ch;text-wrap:balance">One family, three teams, all of Greater Jakarta.</h2>
+<div style="margin-top:56px;display:flex;gap:8px 36px;flex-wrap:wrap;border-bottom:1px solid rgba(243,238,229,0.18)">
+<sc-for list="{{ entities }}" as="e" hint-placeholder-count="3">
+<button onClick="{{ e.select }}" style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;padding:0 0 16px;margin-bottom:-1px;background:none;border:0;border-bottom:2px solid {{ e.border }};color:{{ e.color }};cursor:pointer;white-space:nowrap;transition:color .2s, border-color .2s">{{ e.area }}</button>
+</sc-for>
+</div>
+<div style="padding-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(36px,5vw,80px)">
+<div>
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(28px,2.8vw,38px);line-height:1.05;text-transform:uppercase">{{ entity.name }}</div>
+<div style="margin-top:14px;font-size:17px;line-height:1.6;color:#C9C1B4">{{ entity.coverage }}</div>
+<div style="margin-top:26px;display:flex;flex-direction:column;gap:8px;font-size:16px">
+<span>{{ entity.phone }}</span>
+<a href="{{ entity.mailto }}" style="word-break:break-all;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#6F675C">{{ entity.email }}</a>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-content:start">
+<div>
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(44px,4.2vw,60px);line-height:1">{{ entity.people }}</div>
+<div style="margin-top:10px;font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#A39A8C;line-height:1.5">people in the sales team</div>
+</div>
+<div>
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(44px,4.2vw,60px);line-height:1">{{ entity.trucks }}</div>
+<div style="margin-top:10px;font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#A39A8C;line-height:1.5">trucks</div>
+</div>
+<div>
+<div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(44px,4.2vw,60px);line-height:1">{{ entity.outlets }}</div>
+<div style="margin-top:10px;font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#A39A8C;line-height:1.5">outlets served</div>
+</div>
+<div style="grid-column:1 / -1;padding-top:18px;border-top:1px solid rgba(243,238,229,0.12);font-size:13px;letter-spacing:0.06em;color:#A39A8C;line-height:1.5">{{ entity.sales }}</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact" data-screen-label="Contact" style="border-top:1px solid rgba(243,238,229,0.14)">
+<div style="max-width:1440px;margin:0 auto;padding:clamp(88px,11vw,152px) clamp(20px,4vw,56px) 40px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:48px clamp(48px,7vw,104px);align-items:start">
+<div>
+<h2 style="margin:0;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:clamp(44px,5.6vw,84px);line-height:0.98;text-transform:uppercase;text-wrap:balance">Want our products on your shelf?</h2>
+<p style="margin:24px 0 0;font-size:18px;line-height:1.6;max-width:40ch;color:#C9C1B4">Call the office or send us an email. We’ll connect you with the salesman for your area.</p>
+</div>
+<div style="border-top:1px solid rgba(243,238,229,0.18)">
+<div style="display:grid;grid-template-columns:minmax(72px,100px) minmax(0,1fr);gap:16px;padding:22px 0;border-bottom:1px solid rgba(243,238,229,0.12);align-items:baseline">
+<div style="font-size:12px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#A39A8C">Office</div>
+<a href="tel:+62217202705" style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:22px;letter-spacing:0.04em">+62 21 7202705-6</a>
+</div>
+<div style="display:grid;grid-template-columns:minmax(72px,100px) minmax(0,1fr);gap:16px;padding:22px 0;border-bottom:1px solid rgba(243,238,229,0.12);align-items:baseline">
+<div style="font-size:12px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#A39A8C">Email</div>
+<a href="mailto:Moderntrade@harummandiri.net" style="font-size:18px;font-weight:500;word-break:break-all">Moderntrade@harummandiri.net</a>
+</div>
+<div style="display:grid;grid-template-columns:minmax(72px,100px) minmax(0,1fr);gap:16px;padding:22px 0;border-bottom:1px solid rgba(243,238,229,0.12);align-items:baseline">
+<div style="font-size:12px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#A39A8C">Visit</div>
+<div style="font-size:16px;line-height:1.6;color:#E6E0D5">Jl. Tepekong No. 7G, Kebayoran Lama, Jakarta Selatan 12220<br>Monday–Friday, 08.00–17.00</div>
+</div>
+<a href="#contact" style="margin-top:32px;display:inline-block;font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.16em;text-transform:uppercase;padding:18px 34px;border:2px solid #F3EEE5;white-space:nowrap;transition:all .25s" style-hover="background:#F3EEE5;color:#0E0D0B">Become a customer</a>
+</div>
+</div>
+<footer style="margin-top:clamp(88px,11vw,140px);padding-top:24px;border-top:1px solid rgba(243,238,229,0.14);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8C8376">
+<span style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.22em;color:#F3EEE5;white-space:nowrap">Harum Mandiri</span>
+<span style="flex:1 1 300px;text-align:center">CV. Harum Mandiri · PT. Centra Rasa Harum · CV. Citra Harum Inti Maju</span>
+<a href="https://www.tokopedia.com/harummandiri" style="color:#8C8376;white-space:nowrap">Shop on Tokopedia →</a>
+</footer>
+</div>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showProducts&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { entity: 0 };
+  renderVals() {
+    const milestones = [
+      { year: '1970', title: 'CV. Harum Manis opens in Central Jakarta', detail: 'Khong Guan Biscuit arrives in Indonesia, and we are appointed its distributor for modern and traditional trade in Jakarta.' },
+      { year: '1988', title: 'We become CV. Harum Mandiri', detail: 'The warehouse moves from Central Jakarta to South Jakarta.' },
+      { year: '1991', title: 'PT. Centra Rasa Harum opens in Bogor', detail: 'As the economy grew, so did we, now serving Bogor, Depok, Sukabumi and Cianjur.' },
+      { year: '1995', title: 'CV. Citraharum Inti Maju opens in North Jakarta', detail: 'A third company to serve Central, East and North Jakarta.' },
+      { year: '2011', title: 'A new warehouse in Cimandala', detail: 'Built by PT. Centra Rasa Harum.' },
+      { year: '2017', title: 'A new warehouse in Cianjur', detail: 'Built by PT. Centra Rasa Harum.' }
+    ];
+    const E = [
+      { area: 'South & West Jakarta, Tangerang', name: 'CV. Harum Mandiri', coverage: 'South Jakarta, West Jakarta & Tangerang', phone: '+62 21 7202705-6', email: 'Moderntrade@harummandiri.net', people: '21', trucks: '22', outlets: '1,550', sales: '13 GT · 5 MT · 2 Supervisor · 1 Manager' },
+      { area: 'Bogor, Depok, Sukabumi, Cianjur', name: 'PT. Centra Rasa Harum', coverage: 'Bogor, Depok, Sukabumi, Cianjur · 3 warehouses', phone: '+62 251 220851-3', email: 'Ptcentra@yahoo.com', people: '26', trucks: '25', outlets: '1,900', sales: '15 GT · 5 MT · 3 Supervisor · 3 Manager' },
+      { area: 'Central, East & North Jakarta', name: 'CV. Citra Harum Inti Maju', coverage: 'Central Jakarta, East Jakarta, North Jakarta', phone: '+62 21 4405468-9', email: 'Cim_utr@yahoo.co.id', people: '8', trucks: '8', outlets: '900', sales: '5 GT · 1 MT · 1 Supervisor · 1 Manager' }
+    ];
+    const P = ['PT. Khong Guan Biscuit Indonesia','PT. Serena Indopangan Industry','PT. Jadi Abadi Corak Biscuit','PT. Nissin Biscuit Indonesia','PT. Monde Mahkota Biscuit','PT. Kwangcheon Kim Indonesia','PT. Pusan Manis Mulia','PT. Dinus Cipta Mandiri','PT. Cou Cou Indonesia','PT. Niramas Utama','PT. Saripati Mas Mahkota','PT. Gizizitas Pangan Indonesia','PT. Union Confectionary'];
+    const i = this.state.entity, ent = E[i];
+    return {
+      showProducts: this.props.showProducts ?? true,
+      milestones,
+      principals: P.map((name, k) => ({ name, n: String(k + 1).padStart(2, '0') })),
+      entities: E.map((e, k) => ({ ...e, select: () => this.setState({ entity: k }),
+        color: k === i ? '#F3EEE5' : '#8C8376', border: k === i ? '#E2A13B' : 'transparent' })),
+      entity: { ...ent, mailto: 'mailto:' + ent.email }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F6F1E7;color:#2A2119;font-family:'Hanken Grotesk',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#2A2119;text-decoration:none}
+a:hover{color:#A8341F}
+::selection{background:#E8C68F;color:#2A2119}
+</style>
+</helmet>
+<div style="background:#F6F1E7;min-height:100vh;overflow-x:hidden">
+
+<header style="position:sticky;top:0;z-index:10;background:#F6F1E7;border-bottom:1px solid #E2D7C5">
+<div style="max-width:1240px;margin:0 auto;padding:18px clamp(20px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+<a href="#top" style="display:flex;align-items:baseline;gap:10px;white-space:nowrap">
+<span style="font-family:'Instrument Serif',serif;font-size:27px;line-height:1">Harum Mandiri</span>
+<span style="font-family:'Instrument Serif',serif;font-style:italic;font-size:16px;color:#7A6C5E">since 1970</span>
+</a>
+<nav style="display:flex;align-items:center;gap:clamp(18px,2.6vw,34px);flex-wrap:wrap;font-size:15px;white-space:nowrap">
+<a href="#story">Our story</a>
+<a href="#brands">Brands</a>
+<a href="#promise">How we work</a>
+<a href="#areas">Where we deliver</a>
+<a href="#contact" style="font-weight:600;color:#A8341F;border-bottom:1px solid #A8341F;padding-bottom:2px">Talk to us</a>
+</nav>
+</div>
+</header>
+
+<main id="top">
+
+<section data-screen-label="Hero" style="max-width:1240px;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(20px,4vw,40px) clamp(56px,7vw,88px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,6vw,80px);align-items:end">
+<div>
+<div style="font-size:15px;color:#7A6C5E;white-space:nowrap">Food &amp; snacks distributor · Jakarta Selatan</div>
+<h1 style="margin:22px 0 0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(46px,6.2vw,86px);line-height:1;letter-spacing:-0.012em;text-wrap:balance">Bringing Indonesia’s favourite biscuits to <em style="color:#A8341F">every shelf</em> in Jakarta.</h1>
+<p style="margin:28px 0 0;font-size:clamp(17px,1.35vw,19px);line-height:1.65;color:#54483C;max-width:46ch;text-wrap:pretty">We started in 1970, when Khong Guan Biscuit first arrived in Indonesia. More than fifty years later, our salesmen still visit the same warungs and supermarkets every week, and our trucks still leave the warehouse every morning.</p>
+<div style="margin-top:36px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
+<a href="#contact" style="font-size:16px;font-weight:600;padding:15px 24px;border-radius:3px;background:#A8341F;color:#FBF8F2;white-space:nowrap" style-hover="background:#8F2B19;color:#FBF8F2">Become a customer</a>
+<a href="#brands" style="font-size:16px;font-weight:500;white-space:nowrap;border-bottom:1px solid #B8A890;padding-bottom:3px">See the brands we carry</a>
+</div>
+</div>
+<figure style="margin:0">
+<img src="./assets/warehouse.png" alt="Harum Mandiri warehouse loading bay with delivery trucks" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;filter:sepia(0.08) saturate(0.92)">
+<figcaption style="margin-top:12px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;font-size:14px;color:#7A6C5E">
+<span style="font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;color:#54483C">Our warehouse, ready for the morning routes.</span>
+<span style="white-space:nowrap"><span>Est.</span> <span style="font-family:'Instrument Serif',serif;font-size:18px;color:#2A2119">1970</span></span>
+</figcaption>
+</figure>
+</section>
+
+<section data-screen-label="At a glance" style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+<div style="border-top:1px solid #2A2119;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))">
+<div style="padding:28px 28px 8px 0">
+<div style="font-family:'Instrument Serif',serif;font-size:clamp(40px,4vw,54px);line-height:1">56 years</div>
+<div style="margin-top:10px;font-size:15px;line-height:1.5;color:#54483C;max-width:24ch">of serving Jakarta, from one warehouse to five.</div>
+</div>
+<div style="padding:28px 28px 8px 0">
+<div style="font-family:'Instrument Serif',serif;font-size:clamp(40px,4vw,54px);line-height:1">4,350</div>
+<div style="margin-top:10px;font-size:15px;line-height:1.5;color:#54483C;max-width:24ch">shops and supermarkets we deliver to.</div>
+</div>
+<div style="padding:28px 28px 8px 0">
+<div style="font-family:'Instrument Serif',serif;font-size:clamp(40px,4vw,54px);line-height:1">55 trucks</div>
+<div style="margin-top:10px;font-size:15px;line-height:1.5;color:#54483C;max-width:24ch">on the road across Greater Jakarta.</div>
+</div>
+<div style="padding:28px 28px 8px 0">
+<div style="font-family:'Instrument Serif',serif;font-size:clamp(40px,4vw,54px);line-height:1">3 days</div>
+<div style="margin-top:10px;font-size:15px;line-height:1.5;color:#54483C;max-width:24ch">at most, from your order to your shelf.</div>
+</div>
+</div>
+</section>
+
+<section id="story" data-screen-label="Our story" style="max-width:1240px;margin:0 auto;padding:clamp(88px,11vw,144px) clamp(20px,4vw,40px) clamp(72px,9vw,120px)">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(48px,7vw,104px);align-items:start">
+<div style="position:sticky;top:96px">
+<div style="font-size:15px;color:#7A6C5E">Our story</div>
+<h2 style="margin:14px 0 0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(38px,4.2vw,58px);line-height:1.02;text-wrap:balance">It started with a <em>biscuit tin</em>.</h2>
+<p style="margin:22px 0 0;font-size:17px;line-height:1.7;color:#54483C;max-width:46ch;text-wrap:pretty">Our company was established in 1970 in the name of CV. Harum Manis, when Khong Guan Biscuit first arrived in Indonesia. We were appointed to be a distributor for modern and traditional trade in Jakarta area. Since then, we have become food and snacks distributor.</p>
+<div style="margin-top:36px;aspect-ratio:5/4;border-radius:2px;overflow:hidden;background:#ECE3D3">
+<image-slot id="story-team" shape="rect" placeholder="Photo of the team or founders"></image-slot>
+</div>
+</div>
+<div style="border-top:1px solid #2A2119">
+<sc-for list="{{ milestones }}" as="m" hint-placeholder-count="6">
+<div style="display:grid;grid-template-columns:minmax(72px,110px) minmax(0,1fr);gap:20px;padding:26px 0 30px;border-bottom:1px solid #E2D7C5">
+<div style="font-family:'Instrument Serif',serif;font-size:clamp(30px,2.8vw,38px);line-height:1;color:#A8341F">{{ m.year }}</div>
+<div>
+<div style="font-size:18px;font-weight:600;line-height:1.4">{{ m.title }}</div>
+<div style="margin-top:6px;font-size:16px;line-height:1.65;color:#54483C;max-width:46ch">{{ m.detail }}</div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="brands" data-screen-label="Brands" style="background:#FBF8F2;border-top:1px solid #E2D7C5;border-bottom:1px solid #E2D7C5">
+<div style="max-width:1240px;margin:0 auto;padding:clamp(80px,10vw,128px) clamp(20px,4vw,40px)">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:24px clamp(48px,7vw,104px);align-items:end">
+<div>
+<div style="font-size:15px;color:#7A6C5E">Brands we carry</div>
+<h2 style="margin:14px 0 0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(38px,4.2vw,58px);line-height:1.02;max-width:16ch;text-wrap:balance">Thirteen makers trust us with their snacks.</h2>
+</div>
+<p style="margin:0;font-size:17px;line-height:1.65;color:#54483C;max-width:42ch">From biscuit tins to seaweed snacks, these are the companies whose products ride on our trucks every day.</p>
+</div>
+<sc-if value="{{ showProducts }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1px;background:#E2D7C5;border:1px solid #E2D7C5">
+<div style="background:#FFFFFF;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:28px;box-sizing:border-box">
+<img src="./assets/product-cocon.png" alt="Cocon cone snacks" style="max-width:100%;max-height:100%;object-fit:contain">
+</div>
+<div style="background:#FFFFFF;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:28px;box-sizing:border-box">
+<img src="./assets/product-lazery.png" alt="Lazery yogurt candy" style="max-width:100%;max-height:100%;object-fit:contain">
+</div>
+<div style="background:#FFFFFF;aspect-ratio:4/3;overflow:hidden">
+<img src="./assets/product-noriboom.png" alt="Noriboom seaweed snack" style="width:100%;height:100%;object-fit:cover;display:block">
+</div>
+</div>
+</sc-if>
+<div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));column-gap:40px;border-top:1px solid #2A2119">
+<sc-for list="{{ principals }}" as="p" hint-placeholder-count="13">
+<div style="display:flex;gap:14px;align-items:baseline;padding:16px 0;border-bottom:1px solid #E2D7C5">
+<span style="font-size:13px;color:#9A8B7A;min-width:22px;font-variant-numeric:tabular-nums">{{ p.n }}</span>
+<span style="font-size:16px;line-height:1.4">{{ p.name }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="promise" data-screen-label="How we work" style="max-width:1240px;margin:0 auto;padding:clamp(88px,11vw,144px) clamp(20px,4vw,40px)">
+<div style="font-size:15px;color:#7A6C5E">How we work</div>
+<h2 style="margin:14px 0 0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(38px,4.2vw,58px);line-height:1.02;max-width:18ch;text-wrap:balance">What every shop owner can count on.</h2>
+<div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:40px 36px">
+<div style="border-top:1px solid #2A2119;padding-top:20px">
+<div style="font-family:'Instrument Serif',serif;font-size:22px;color:#A8341F">01</div>
+<div style="margin-top:36px;font-size:19px;font-weight:600;line-height:1.3">A salesman who knows your shop</div>
+<p style="margin:10px 0 0;font-size:16px;line-height:1.65;color:#54483C">Provides salesman for modern and traditional market.</p>
+</div>
+<div style="border-top:1px solid #2A2119;padding-top:20px">
+<div style="font-family:'Instrument Serif',serif;font-size:22px;color:#A8341F">02</div>
+<div style="margin-top:36px;font-size:19px;font-weight:600;line-height:1.3">On your shelf within three days</div>
+<p style="margin:10px 0 0;font-size:16px;line-height:1.65;color:#54483C">3x24 hour maximum delivery to customer.</p>
+</div>
+<div style="border-top:1px solid #2A2119;padding-top:20px">
+<div style="font-family:'Instrument Serif',serif;font-size:22px;color:#A8341F">03</div>
+<div style="margin-top:36px;font-size:19px;font-weight:600;line-height:1.3">Always the freshest stock first</div>
+<p style="margin:10px 0 0;font-size:16px;line-height:1.65;color:#54483C">Assure FIFO (First in First out) of our products.</p>
+</div>
+<div style="border-top:1px solid #2A2119;padding-top:20px">
+<div style="font-family:'Instrument Serif',serif;font-size:22px;color:#A8341F">04</div>
+<div style="margin-top:36px;font-size:19px;font-weight:600;line-height:1.3">Delivery from Rp 150.000</div>
+<p style="margin:10px 0 0;font-size:16px;line-height:1.65;color:#54483C">Minimum purchase of Rp 150,000.00 within Jakarta, Tangerang, Depok, Bogor, Sukabumi, Cianjur Area.</p>
+</div>
+</div>
+</section>
+
+<section id="areas" data-screen-label="Where we deliver" style="background:#FBF8F2;border-top:1px solid #E2D7C5;border-bottom:1px solid #E2D7C5">
+<div style="max-width:1240px;margin:0 auto;padding:clamp(80px,10vw,128px) clamp(20px,4vw,40px)">
+<div style="font-size:15px;color:#7A6C5E">Where we deliver</div>
+<h2 style="margin:14px 0 0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(38px,4.2vw,58px);line-height:1.02;max-width:18ch;text-wrap:balance">One family, three teams, all of Greater Jakarta.</h2>
+<div style="margin-top:48px;display:flex;gap:8px 32px;flex-wrap:wrap;border-bottom:1px solid #E2D7C5">
+<sc-for list="{{ entities }}" as="e" hint-placeholder-count="3">
+<button onClick="{{ e.select }}" style="font:inherit;font-size:16px;font-weight:500;padding:0 0 14px;margin-bottom:-1px;background:none;border:0;border-bottom:2px solid {{ e.border }};color:{{ e.color }};cursor:pointer;white-space:nowrap;transition:color .2s, border-color .2s">{{ e.area }}</button>
+</sc-for>
+</div>
+<div style="padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(32px,5vw,72px)">
+<div>
+<div style="font-family:'Instrument Serif',serif;font-size:clamp(32px,3.2vw,42px);line-height:1.05">{{ entity.name }}</div>
+<div style="margin-top:12px;font-size:17px;line-height:1.6;color:#54483C">{{ entity.coverage }}</div>
+<div style="margin-top:24px;display:flex;flex-direction:column;gap:6px;font-size:16px">
+<span>{{ entity.phone }}</span>
+<a href="{{ entity.mailto }}" style="color:#A8341F;word-break:break-all">{{ entity.email }}</a>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-content:start">
+<div>
+<div style="font-family:'Instrument Serif',serif;font-size:clamp(38px,3.6vw,50px);line-height:1">{{ entity.people }}</div>
+<div style="margin-top:8px;font-size:14px;color:#54483C;line-height:1.4">people in the sales team</div>
+</div>
+<div>
+<div style="font-family:'Instrument Serif',serif;font-size:clamp(38px,3.6vw,50px);line-height:1">{{ entity.trucks }}</div>
+<div style="margin-top:8px;font-size:14px;color:#54483C;line-height:1.4">trucks</div>
+</div>
+<div>
+<div style="font-family:'Instrument Serif',serif;font-size:clamp(38px,3.6vw,50px);line-height:1">{{ entity.outlets }}</div>
+<div style="margin-top:8px;font-size:14px;color:#54483C;line-height:1.4">outlets served</div>
+</div>
+<div style="grid-column:1 / -1;padding-top:16px;border-top:1px solid #E2D7C5;font-size:14px;color:#7A6C5E;line-height:1.5">{{ entity.sales }}</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact" data-screen-label="Contact" style="max-width:1240px;margin:0 auto;padding:clamp(88px,11vw,144px) clamp(20px,4vw,40px) 40px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px clamp(48px,7vw,104px);align-items:start">
+<div>
+<h2 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(46px,5.6vw,80px);line-height:0.98;text-wrap:balance">Want our products on <em style="color:#A8341F">your</em> shelf?</h2>
+<p style="margin:24px 0 0;font-size:18px;line-height:1.6;max-width:40ch;color:#54483C">Call the office or send us an email. We’ll connect you with the salesman for your area.</p>
+</div>
+<div style="border-top:1px solid #2A2119">
+<div style="display:grid;grid-template-columns:minmax(72px,100px) minmax(0,1fr);gap:16px;padding:20px 0;border-bottom:1px solid #E2D7C5;align-items:baseline">
+<div style="font-size:14px;color:#7A6C5E">Office</div>
+<a href="tel:+62217202705" style="font-size:20px;font-weight:500">+62 21 7202705-6</a>
+</div>
+<div style="display:grid;grid-template-columns:minmax(72px,100px) minmax(0,1fr);gap:16px;padding:20px 0;border-bottom:1px solid #E2D7C5;align-items:baseline">
+<div style="font-size:14px;color:#7A6C5E">Email</div>
+<a href="mailto:Moderntrade@harummandiri.net" style="font-size:18px;font-weight:500;color:#A8341F;word-break:break-all">Moderntrade@harummandiri.net</a>
+</div>
+<div style="display:grid;grid-template-columns:minmax(72px,100px) minmax(0,1fr);gap:16px;padding:20px 0;border-bottom:1px solid #E2D7C5;align-items:baseline">
+<div style="font-size:14px;color:#7A6C5E">Visit</div>
+<div style="font-size:16px;line-height:1.6">Jl. Tepekong No. 7G, Kebayoran Lama, Jakarta Selatan 12220<br>Monday–Friday, 08.00–17.00</div>
+</div>
+</div>
+</div>
+<footer style="margin-top:clamp(80px,10vw,128px);padding-top:22px;border-top:1px solid #E2D7C5;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;font-size:14px;color:#7A6C5E">
+<span style="font-family:'Instrument Serif',serif;font-size:22px;color:#2A2119;white-space:nowrap">Harum Mandiri</span>
+<span style="flex:1 1 300px;text-align:center">CV. Harum Mandiri · PT. Centra Rasa Harum · CV. Citra Harum Inti Maju</span>
+<a href="https://www.tokopedia.com/harummandiri" style="color:#7A6C5E;white-space:nowrap">Shop on Tokopedia →</a>
+</footer>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showProducts&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { entity: 0 };
+  renderVals() {
+    const milestones = [
+      { year: '1970', title: 'CV. Harum Manis opens in Central Jakarta', detail: 'Khong Guan Biscuit arrives in Indonesia, and we are appointed its distributor for modern and traditional trade in Jakarta.' },
+      { year: '1988', title: 'We become CV. Harum Mandiri', detail: 'The warehouse moves from Central Jakarta to South Jakarta.' },
+      { year: '1991', title: 'PT. Centra Rasa Harum opens in Bogor', detail: 'As the economy grew, so did we, now serving Bogor, Depok, Sukabumi and Cianjur.' },
+      { year: '1995', title: 'CV. Citraharum Inti Maju opens in North Jakarta', detail: 'A third company to serve Central, East and North Jakarta.' },
+      { year: '2011', title: 'A new warehouse in Cimandala', detail: 'Built by PT. Centra Rasa Harum.' },
+      { year: '2017', title: 'A new warehouse in Cianjur', detail: 'Built by PT. Centra Rasa Harum.' }
+    ];
+    const E = [
+      { area: 'South & West Jakarta, Tangerang', name: 'CV. Harum Mandiri', coverage: 'South Jakarta, West Jakarta & Tangerang', phone: '+62 21 7202705-6', email: 'Moderntrade@harummandiri.net', people: '21', trucks: '22', outlets: '1,550', sales: '13 GT · 5 MT · 2 Supervisor · 1 Manager' },
+      { area: 'Bogor, Depok, Sukabumi, Cianjur', name: 'PT. Centra Rasa Harum', coverage: 'Bogor, Depok, Sukabumi, Cianjur · 3 warehouses', phone: '+62 251 220851-3', email: 'Ptcentra@yahoo.com', people: '26', trucks: '25', outlets: '1,900', sales: '15 GT · 5 MT · 3 Supervisor · 3 Manager' },
+      { area: 'Central, East & North Jakarta', name: 'CV. Citra Harum Inti Maju', coverage: 'Central Jakarta, East Jakarta, North Jakarta', phone: '+62 21 4405468-9', email: 'Cim_utr@yahoo.co.id', people: '8', trucks: '8', outlets: '900', sales: '5 GT · 1 MT · 1 Supervisor · 1 Manager' }
+    ];
+    const P = ['PT. Khong Guan Biscuit Indonesia','PT. Serena Indopangan Industry','PT. Jadi Abadi Corak Biscuit','PT. Nissin Biscuit Indonesia','PT. Monde Mahkota Biscuit','PT. Kwangcheon Kim Indonesia','PT. Pusan Manis Mulia','PT. Dinus Cipta Mandiri','PT. Cou Cou Indonesia','PT. Niramas Utama','PT. Saripati Mas Mahkota','PT. Gizizitas Pangan Indonesia','PT. Union Confectionary'];
+    const i = this.state.entity, ent = E[i];
+    return {
+      showProducts: this.props.showProducts ?? true,
+      milestones,
+      principals: P.map((name, k) => ({ name, n: String(k + 1).padStart(2, '0') })),
+      entities: E.map((e, k) => ({ ...e, select: () => this.setState({ entity: k }),
+        color: k === i ? '#2A2119' : '#8A7B6B', border: k === i ? '#A8341F' : 'transparent' })),
+      entity: { ...ent, mailto: 'mailto:' + ent.email }
+    };
+  }
+}
+</script>
+</body>
+</html>
