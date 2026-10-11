@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Harum Mandiri — Jakarta's biscuit and snacks distributor since 1970</title>
 <meta name="description" content="Harum Mandiri distributes Khong Guan, Nissin, Monde and more to 4,350 shops across Greater Jakarta. On your shelf within three days.">
-<meta name="theme-color" content="#F4EFE4">
+<meta name="theme-color" content="#FAF4E7">
 <meta property="og:title" content="Harum Mandiri — biscuits on every shelf in Jakarta">
 <meta property="og:description" content="Food & snacks distributor serving Greater Jakarta since 1970.">
 <meta property="og:type" content="website">
@@ -19,150 +19,188 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="./image-slot.js"></script>
 <style>
+:root{--ink:#1A3447;--ink-2:#2A5273;--bg:#FAF4E7;--surface:#F0E6D2;--accent:#E8653A;--saffron:#F2B544;--wa:#25D366;--r-sm:10px;--r-md:16px;--r-lg:22px;--shadow-sm:0 1px 2px rgba(26,52,71,0.08),0 6px 16px -8px rgba(26,52,71,0.18);--shadow-md:0 2px 4px rgba(26,52,71,0.08),0 18px 36px -16px rgba(26,52,71,0.28)}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:#F4EFE4;color:#1B2F86;font-family:'Instrument Sans',sans-serif;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
-a{color:#1B2F86;text-decoration:none}
-a:hover{color:#2A43A8}
-::selection{background:#F2C14E;color:#1B2F86}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Instrument Sans',sans-serif;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+a{color:var(--ink);text-decoration:none}
+a:hover{color:var(--ink-2)}
+::selection{background:var(--accent);color:#fff}
 image-slot[data-cutout]::part(image){mix-blend-mode:multiply}
+/* less-blocky softeners — scoped so hero/menu stay flush */
+section[data-screen-label] .card,
+[data-screen-label="Brands"] > div > div[style*="background:#F0E6D2"],
+[data-screen-label="How we work"] > div[style*="grid-template-columns"] > div[style*="background:#FAF4E7"],
+[data-screen-label="At a glance"] > div > div[style*="padding:20px"]
+  {border-radius:var(--r-md)!important}
+[data-strip="1"] > div[data-card]{border-radius:var(--r-md)!important;box-shadow:var(--shadow-sm)!important}
+section[data-screen-label] a[href^="#contact"],
+section[data-screen-label] a[href^="#brands"],
+section[data-screen-label] a[href^="tel:"],
+section[data-screen-label] a[href^="mailto:"]
+  {border-radius:999px!important;margin:6px 10px!important}
+/* softer dividers: section borders become faint instead of hard lines */
+section[data-screen-label]{border-bottom-color:rgba(26,52,71,0.08)!important}
+/* collapse hard 1px grid gutters into breathing room */
+[data-screen-label="At a glance"] > div[style*="gap:1px"],
+[data-screen-label="Brands"] > div[style*="gap:1px"],
+[data-screen-label="How we work"] > div[style*="gap:1px"],
+[data-screen-label="Where we deliver"] > div[style*="gap:1px"]
+  {background:transparent!important;gap:12px!important;padding:0 12px 24px!important}
+/* floating WhatsApp */
+.wa-fab{position:fixed;right:calc(16px + env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom));z-index:50;display:flex;align-items:center;gap:10px;padding:0 18px 0 14px;height:56px;border-radius:999px;background:var(--wa);color:#fff;font-weight:600;font-size:15px;box-shadow:0 10px 28px -8px rgba(37,211,102,0.55),0 2px 6px rgba(0,0,0,0.12);transition:transform .2s ease}
+.wa-fab:hover{transform:translateY(-2px);color:#fff}
+.wa-fab svg{width:26px;height:26px;flex:0 0 auto}
+.hm-pin{background:transparent;border:0}
+.leaflet-popup-content-wrapper{border-radius:14px!important;box-shadow:0 10px 30px -10px rgba(26,52,71,0.35)!important;background:#FDFBF5!important;color:#1A3447!important;font-family:'Instrument Sans',sans-serif}
+.leaflet-popup-content{margin:14px 16px!important;line-height:1.45;font-size:13px}
+.leaflet-popup-content h4{margin:0 0 4px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;letter-spacing:-0.01em;color:#1A3447}
+.leaflet-popup-content .hm-pop-tag{display:inline-block;margin-bottom:6px;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:0.04em}
+.leaflet-popup-content a{color:#E8653A;font-weight:600}
+.leaflet-popup-tip{background:#FDFBF5!important}
+.leaflet-container{font-family:'Instrument Sans',sans-serif!important;background:#F0E6D2!important}
+.leaflet-control-attribution{font-size:10px!important;background:rgba(253,251,245,0.9)!important}
+.wa-fab .wa-label{display:inline}
+@media (max-width:420px){.wa-fab .wa-label{display:none}.wa-fab{padding:0;width:56px;justify-content:center}}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
 </helmet>
-<div style="background:#F4EFE4;min-height:100vh;overflow-x:clip">
+<div style="background:#FAF4E7;min-height:100vh;overflow-x:clip">
 
-<header style="position:fixed;top:0;left:0;right:0;z-index:30;background:#F4EFE4;border-bottom:1px solid rgba(27,47,134,0.16);padding-top:env(safe-area-inset-top);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)">
+<header style="position:fixed;top:0;left:0;right:0;z-index:30;background:#FAF4E7;border-bottom:1px solid rgba(26,52,71,0.16);padding-top:env(safe-area-inset-top);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)">
 <div style="max-width:1200px;margin:0 auto;display:flex;align-items:stretch;justify-content:space-between;height:60px">
 <a href="#top" style="display:flex;align-items:center;gap:12px;padding:0 16px;white-space:nowrap">
-<span aria-hidden="true" style="width:28px;height:28px;display:grid;grid-template-columns:1fr 1fr;gap:3px;flex:0 0 auto"><span style="background:#1B2F86"></span><span style="background:#F2C14E"></span><span style="background:#F2C14E"></span><span style="background:#1B2F86"></span></span>
+<span aria-hidden="true" style="width:28px;height:28px;display:grid;grid-template-columns:1fr 1fr;gap:3px;flex:0 0 auto"><span style="background:#1A3447"></span><span style="background:#E8653A"></span><span style="background:#E8653A"></span><span style="background:#1A3447"></span></span>
 <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.02em">Harum Mandiri</span>
 </a>
 <div style="display:flex;align-items:stretch">
-<a href="#contact" style="display:flex;align-items:center;padding:0 18px;background:#F2C14E;color:#1B2F86;font-weight:600;font-size:14px;white-space:nowrap" style-hover="background:#1B2F86;color:#F4EFE4">Talk to us</a>
-<button onClick="{{ toggleMenu }}" aria-label="Menu" style="width:60px;border:0;border-left:1px solid rgba(27,47,134,0.16);background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:0">
-<span style="display:block;width:18px;height:2px;background:#1B2F86"></span>
-<span style="display:block;width:18px;height:2px;background:#1B2F86"></span>
+<a href="#contact" style="display:flex;align-items:center;padding:0 18px;background:#E8653A;color:#1A3447;font-weight:600;font-size:14px;white-space:nowrap" style-hover="background:#1A3447;color:#FAF4E7">Talk to us</a>
+<button onClick="{{ toggleMenu }}" aria-label="Menu" style="width:60px;border:0;border-left:1px solid rgba(26,52,71,0.16);background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:0">
+<span style="display:block;width:18px;height:2px;background:#1A3447"></span>
+<span style="display:block;width:18px;height:2px;background:#1A3447"></span>
 </button>
 </div>
 </div>
 </header>
 
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-<div style="position:fixed;inset:0;z-index:40;background:#F4EFE4;display:flex;flex-direction:column;box-sizing:border-box;overflow:auto">
-<div style="display:flex;justify-content:space-between;align-items:stretch;height:60px;border-bottom:1px solid rgba(27,47,134,0.16)">
+<div style="position:fixed;inset:0;z-index:40;background:#FAF4E7;display:flex;flex-direction:column;box-sizing:border-box;overflow:auto">
+<div style="display:flex;justify-content:space-between;align-items:stretch;height:60px;border-bottom:1px solid rgba(26,52,71,0.16)">
 <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;display:flex;align-items:center;padding:0 16px">Menu</span>
-<button onClick="{{ toggleMenu }}" aria-label="Close menu" style="width:60px;border:0;background:#F2C14E;color:#1B2F86;font-size:24px;line-height:1;cursor:pointer">×</button>
+<button onClick="{{ toggleMenu }}" aria-label="Close menu" style="width:60px;border:0;background:#E8653A;color:#1A3447;font-size:24px;line-height:1;cursor:pointer">×</button>
 </div>
 <nav style="display:flex;flex-direction:column">
-<a href="#story" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(27,47,134,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Our story</span><span style="font-size:13px;color:#1B2F86">01</span></a>
-<a href="#brands" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(27,47,134,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Brands</span><span style="font-size:13px;color:#1B2F86">02</span></a>
-<a href="#promise" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(27,47,134,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>How we work</span><span style="font-size:13px;color:#1B2F86">03</span></a>
-<a href="#areas" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(27,47,134,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Where we deliver</span><span style="font-size:13px;color:#1B2F86">04</span></a>
-<a href="#contact" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;background:#F2C14E;color:#1B2F86;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Talk to us</span><span style="font-size:13px">05</span></a>
+<a href="#story" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(26,52,71,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Our story</span><span style="font-size:13px;color:#1A3447">01</span></a>
+<a href="#brands" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(26,52,71,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Brands</span><span style="font-size:13px;color:#1A3447">02</span></a>
+<a href="#promise" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(26,52,71,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>How we work</span><span style="font-size:13px;color:#1A3447">03</span></a>
+<a href="#areas" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(26,52,71,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Where we deliver</span><span style="font-size:13px;color:#1A3447">04</span></a>
+<a href="#contact" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;background:#E8653A;color:#1A3447;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Talk to us</span><span style="font-size:13px">05</span></a>
 </nav>
-<div style="margin-top:auto;padding:24px 16px 32px;font-size:15px;line-height:1.6;color:rgba(27,47,134,0.74)">+62 21 7202705-6<br>Moderntrade@harummandiri.net</div>
+<div style="margin-top:auto;padding:24px 16px 32px;font-size:15px;line-height:1.6;color:rgba(26,52,71,0.74)">+62 21 7202705-6<br>Moderntrade@harummandiri.net</div>
 </div>
 </sc-if>
 
 <main id="top" style="padding-top:calc(61px + env(safe-area-inset-top))">
 
-<section data-screen-label="Hero" style="border-bottom:1px solid rgba(27,47,134,0.16)">
+<section data-screen-label="Hero" style="border-bottom:1px solid rgba(26,52,71,0.16)">
 <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr))">
 <div style="padding:40px 16px 32px;display:flex;flex-direction:column;justify-content:flex-end">
-<div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1B2F86">Food &amp; snacks distributor · Jakarta · Est. 1970</div>
-<h1 data-reveal="" data-delay="80" style="margin:16px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(40px,10vw,84px);line-height:1;letter-spacing:-0.035em;text-wrap:balance">Indonesia’s favourite biscuits, on <span style="background:#F2C14E;padding:0 0.08em;box-decoration-break:clone;-webkit-box-decoration-break:clone">every shelf</span> in Jakarta.</h1>
-<p data-reveal="" data-delay="160" style="margin:18px 0 0;font-size:16px;line-height:1.6;color:rgba(27,47,134,0.78);max-width:42ch;text-wrap:pretty">Distributing since 1970, when Khong Guan Biscuit first arrived in Indonesia. Our trucks leave the warehouse every morning.</p>
+<div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1A3447">Food &amp; snacks distributor · Jakarta · Est. 1970</div>
+<h1 data-reveal="" data-delay="80" style="margin:16px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(40px,10vw,84px);line-height:1;letter-spacing:-0.035em;text-wrap:balance">Indonesia’s favourite biscuits, on <span style="background:#E8653A;padding:0 0.08em;box-decoration-break:clone;-webkit-box-decoration-break:clone">every shelf</span> in Jakarta.</h1>
+<p data-reveal="" data-delay="160" style="margin:18px 0 0;font-size:16px;line-height:1.6;color:rgba(26,52,71,0.78);max-width:42ch;text-wrap:pretty">Distributing since 1970, when Khong Guan Biscuit first arrived in Indonesia. Our trucks leave the warehouse every morning.</p>
 </div>
-<div style="position:relative;aspect-ratio:4/3;background:#EAE3D2;min-height:100%">
+<div style="position:relative;aspect-ratio:4/3;background:#F0E6D2;min-height:100%">
 <image-slot id="hero-bg" shape="rect" src="./assets/warehouse.webp" placeholder="Photo: warehouse or trucks"></image-slot>
 </div>
 </div>
-<div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid rgba(27,47,134,0.16)">
-<a href="#contact" style="height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:#F2C14E;color:#1B2F86;font-weight:600;font-size:15px" style-hover="background:#1B2F86;color:#F4EFE4"><span>Become a customer</span><span>→</span></a>
-<a href="#brands" style="height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-weight:600;font-size:15px" style-hover="background:#EAE3D2;color:#1B2F86"><span>Our brands</span><span>↓</span></a>
+<div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid rgba(26,52,71,0.16)">
+<a href="#contact" style="height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:#E8653A;color:#1A3447;font-weight:600;font-size:15px" style-hover="background:#1A3447;color:#FAF4E7"><span>Become a customer</span><span>→</span></a>
+<a href="#brands" style="height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-weight:600;font-size:15px" style-hover="background:#F0E6D2;color:#1A3447"><span>Our brands</span><span>↓</span></a>
 </div>
 </section>
 
-<section data-screen-label="Brand logos" style="border-bottom:1px solid rgba(27,47,134,0.16)">
-<div style="max-width:1200px;margin:0 auto;padding:14px 16px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(27,47,134,0.7)">The brands we distribute</div>
-<div data-strip="1" style="display:flex;gap:14px;overflow-x:auto;padding:24px 16px 32px;background:#EAE3D2;border-top:1px solid rgba(27,47,134,0.16);scrollbar-width:none;-webkit-overflow-scrolling:touch">
+<section data-screen-label="Brand logos" style="border-bottom:1px solid rgba(26,52,71,0.16)">
+<div style="max-width:1200px;margin:0 auto;padding:14px 16px;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(26,52,71,0.7)">The brands we distribute</div>
+<div data-strip="1" style="display:flex;gap:14px;overflow-x:auto;padding:24px 16px 32px;background:#F0E6D2;border-top:1px solid rgba(26,52,71,0.16);scrollbar-width:none;-webkit-overflow-scrolling:touch">
 <sc-for list="{{ stripSlots }}" as="s" hint-placeholder-count="13">
-<div data-card="" style="flex:0 0 auto;width:clamp(150px,40vw,210px);aspect-ratio:3/2;background:linear-gradient(180deg,#FFFFFF 0%,#FBF8F2 100%);border-radius:6px;color:#1B2F86;padding:16px 20px;box-sizing:border-box;box-shadow:0 1px 2px rgba(27,47,134,0.14), 0 10px 20px -12px rgba(27,47,134,0.36)">
+<div data-card="" style="flex:0 0 auto;width:clamp(150px,40vw,210px);aspect-ratio:3/2;background:linear-gradient(180deg,#FFFFFF 0%,#FBF8F2 100%);border-radius:6px;color:#1A3447;padding:16px 20px;box-sizing:border-box;box-shadow:0 1px 2px rgba(26,52,71,0.14), 0 10px 20px -12px rgba(26,52,71,0.36)">
 <image-slot id="{{ s.id }}" data-cutout="" shape="rect" fit="contain" placeholder="Brand logo" style="--slot-bg:transparent"></image-slot>
 </div>
 </sc-for>
 </div>
 <sc-if value="{{ showTicker }}" hint-placeholder-val="{{ true }}">
-<div data-strip="-1" style="display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;white-space:nowrap;border-top:1px solid rgba(27,47,134,0.16)">
+<div data-strip="-1" style="display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;white-space:nowrap;border-top:1px solid rgba(26,52,71,0.16)">
 <sc-for list="{{ principals }}" as="p" hint-placeholder-count="13">
-<span style="flex:0 0 auto;display:flex;align-items:center;gap:14px;padding:14px 16px;border-right:1px solid rgba(27,47,134,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-size:20px;letter-spacing:-0.01em"><span style="width:6px;height:6px;background:#F2C14E;display:block"></span>{{ p.rest }}</span>
+<span style="flex:0 0 auto;display:flex;align-items:center;gap:14px;padding:14px 16px;border-right:1px solid rgba(26,52,71,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-size:20px;letter-spacing:-0.01em"><span style="width:6px;height:6px;background:#E8653A;display:block"></span>{{ p.rest }}</span>
 </sc-for>
 </div>
 </sc-if>
 </section>
 
-<section data-screen-label="At a glance" style="border-bottom:1px solid rgba(27,47,134,0.16)">
-<div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(50%,260px),1fr));gap:1px;background:rgba(27,47,134,0.16)">
-<div data-reveal="" style="background:#F2C14E;color:#1B2F86;padding:20px 16px 22px;display:flex;flex-direction:column;gap:28px">
+<section data-screen-label="At a glance" style="border-bottom:1px solid rgba(26,52,71,0.16)">
+<div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(50%,260px),1fr));gap:1px;background:rgba(26,52,71,0.16)">
+<div data-reveal="" style="background:#E8653A;color:#1A3447;padding:20px 16px 22px;display:flex;flex-direction:column;gap:28px">
 <div style="font-size:13px;font-weight:600">Years serving Jakarta</div>
 <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(48px,13vw,96px);line-height:0.9;letter-spacing:-0.045em"><span data-count="56">56</span></div>
 </div>
-<div data-reveal="" style="background:#F4EFE4;padding:20px 16px 22px;display:flex;flex-direction:column;gap:28px">
-<div style="font-size:13px;font-weight:600;color:rgba(27,47,134,0.74)">Shops &amp; supermarkets</div>
+<div data-reveal="" style="background:#FAF4E7;padding:20px 16px 22px;display:flex;flex-direction:column;gap:28px">
+<div style="font-size:13px;font-weight:600;color:rgba(26,52,71,0.74)">Shops &amp; supermarkets</div>
 <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(48px,13vw,96px);line-height:0.9;letter-spacing:-0.045em"><span data-count="4350">4,350</span></div>
 </div>
-<div data-reveal="" style="background:#F4EFE4;padding:20px 16px 22px;display:flex;flex-direction:column;gap:28px">
-<div style="font-size:13px;font-weight:600;color:rgba(27,47,134,0.74)">Trucks on the road</div>
+<div data-reveal="" style="background:#FAF4E7;padding:20px 16px 22px;display:flex;flex-direction:column;gap:28px">
+<div style="font-size:13px;font-weight:600;color:rgba(26,52,71,0.74)">Trucks on the road</div>
 <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(48px,13vw,96px);line-height:0.9;letter-spacing:-0.045em"><span data-count="55">55</span></div>
 </div>
-<div data-reveal="" style="background:#F4EFE4;padding:20px 16px 22px;display:flex;flex-direction:column;gap:28px">
-<div style="font-size:13px;font-weight:600;color:rgba(27,47,134,0.74)">Days max, order to shelf</div>
-<div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(48px,13vw,96px);line-height:0.9;letter-spacing:-0.045em;color:#1B2F86"><span data-count="3">3</span></div>
+<div data-reveal="" style="background:#FAF4E7;padding:20px 16px 22px;display:flex;flex-direction:column;gap:28px">
+<div style="font-size:13px;font-weight:600;color:rgba(26,52,71,0.74)">Days max, order to shelf</div>
+<div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(48px,13vw,96px);line-height:0.9;letter-spacing:-0.045em;color:#1A3447"><span data-count="3">3</span></div>
 </div>
 </div>
 </section>
 
-<section id="story" data-screen-label="Our story" style="border-bottom:1px solid rgba(27,47,134,0.16)">
+<section id="story" data-screen-label="Our story" style="border-bottom:1px solid rgba(26,52,71,0.16)">
 <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
 <div style="padding:56px 16px 32px">
-<div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1B2F86">01 · Our story</div>
+<div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1A3447">01 · Our story</div>
 <h2 data-reveal="" style="margin:14px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(34px,8.5vw,60px);line-height:1;letter-spacing:-0.03em">It started with a biscuit tin.</h2>
-<p data-reveal="" style="margin:18px 0 0;font-size:16px;line-height:1.65;color:rgba(27,47,134,0.78);max-width:46ch;text-wrap:pretty">Our company was established in 1970 in the name of CV. Harum Manis, when Khong Guan Biscuit first arrived in Indonesia. We were appointed to be a distributor for modern and traditional trade in Jakarta area. Since then, we have become food and snacks distributor.</p>
+<p data-reveal="" style="margin:18px 0 0;font-size:16px;line-height:1.65;color:rgba(26,52,71,0.78);max-width:46ch;text-wrap:pretty">Our company was established in 1970 in the name of CV. Harum Manis, when Khong Guan Biscuit first arrived in Indonesia. We were appointed to be a distributor for modern and traditional trade in Jakarta area. Since then, we have become food and snacks distributor.</p>
 </div>
 </div>
 <div style="max-width:1200px;margin:0 auto">
 <sc-for list="{{ milestones }}" as="m" hint-placeholder-count="6">
-<div data-reveal="" style="display:grid;grid-template-columns:76px minmax(0,1fr);gap:0 12px;padding:18px 16px;border-top:1px solid rgba(27,47,134,0.16)">
-<div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;color:#1B2F86">{{ m.year }}</div>
+<div data-reveal="" style="display:grid;grid-template-columns:76px minmax(0,1fr);gap:0 12px;padding:18px 16px;border-top:1px solid rgba(26,52,71,0.16)">
+<div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;color:#1A3447">{{ m.year }}</div>
 <div>
 <div style="font-weight:600;font-size:16px;line-height:1.35">{{ m.title }}</div>
-<div style="margin-top:4px;font-size:14px;line-height:1.55;color:rgba(27,47,134,0.72)">{{ m.detail }}</div>
+<div style="margin-top:4px;font-size:14px;line-height:1.55;color:rgba(26,52,71,0.72)">{{ m.detail }}</div>
 </div>
 </div>
 </sc-for>
 </div>
 </section>
 
-<section id="brands" data-screen-label="Brands" style="border-bottom:1px solid rgba(27,47,134,0.16)">
+<section id="brands" data-screen-label="Brands" style="border-bottom:1px solid rgba(26,52,71,0.16)">
 <div style="max-width:1200px;margin:0 auto;padding:56px 16px 32px">
-<div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1B2F86">02 · Brands we carry</div>
+<div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1A3447">02 · Brands we carry</div>
 <h2 data-reveal="" style="margin:14px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(34px,8.5vw,60px);line-height:1;letter-spacing:-0.03em;max-width:16ch">Thirteen makers trust us with their snacks.</h2>
-<p data-reveal="" style="margin:16px 0 0;font-size:16px;line-height:1.6;color:rgba(27,47,134,0.78);max-width:42ch">These three are our biggest sellers, on shelves across Greater Jakarta every week.</p>
+<p data-reveal="" style="margin:16px 0 0;font-size:16px;line-height:1.6;color:rgba(26,52,71,0.78);max-width:42ch">These three are our biggest sellers, on shelves across Greater Jakarta every week.</p>
 </div>
 <sc-if value="{{ showProducts }}" hint-placeholder-val="{{ true }}">
-<div data-reveal="" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:rgba(27,47,134,0.16);border-top:1px solid rgba(27,47,134,0.16)">
+<div data-reveal="" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:rgba(26,52,71,0.16);border-top:1px solid rgba(26,52,71,0.16)">
 <sc-for list="{{ products }}" as="pr" hint-placeholder-count="3">
-<div style="background:#EAE3D2;padding:28px 20px 22px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#F0E6D2;padding:28px 20px 22px;display:flex;flex-direction:column;gap:18px">
 <div style="position:relative;aspect-ratio:1;width:100%;max-width:380px;margin:0 auto">
-<div style="position:absolute;left:18%;right:18%;bottom:4%;height:8%;border-radius:50%;background:radial-gradient(closest-side,rgba(27,47,134,0.32),rgba(27,47,134,0))"></div>
+<div style="position:absolute;left:18%;right:18%;bottom:4%;height:8%;border-radius:50%;background:radial-gradient(closest-side,rgba(26,52,71,0.32),rgba(26,52,71,0))"></div>
 <div style="position:absolute;inset:0 4% 7%">
 <image-slot id="{{ pr.id }}" data-cutout="" shape="rect" fit="contain" placeholder="Product photo" style="--slot-bg:transparent"></image-slot>
 </div>
 </div>
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:1px solid rgba(27,47,134,0.16);padding-top:12px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:1px solid rgba(26,52,71,0.16);padding-top:12px">
 <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em">{{ pr.name }}</span>
-<span style="font-size:13px;color:rgba(27,47,134,0.72);white-space:nowrap">{{ pr.maker }}</span>
+<span style="font-size:13px;color:rgba(26,52,71,0.72);white-space:nowrap">{{ pr.maker }}</span>
 </div>
 </div>
 </sc-for>
@@ -170,116 +208,120 @@ image-slot[data-cutout]::part(image){mix-blend-mode:multiply}
 </sc-if>
 </section>
 
-<section id="promise" data-screen-label="How we work" style="border-bottom:1px solid rgba(27,47,134,0.16)">
+<section id="promise" data-screen-label="How we work" style="border-bottom:1px solid rgba(26,52,71,0.16)">
 <div style="max-width:1200px;margin:0 auto;padding:56px 16px 32px">
-<div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1B2F86">03 · How we work</div>
+<div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1A3447">03 · How we work</div>
 <h2 data-reveal="" style="margin:14px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(34px,8.5vw,60px);line-height:1;letter-spacing:-0.03em;max-width:16ch">What every shop owner can count on.</h2>
 </div>
-<div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:1px;background:rgba(27,47,134,0.16);border-top:1px solid rgba(27,47,134,0.16)">
-<div data-reveal="" style="background:#F4EFE4;padding:22px 16px 26px;display:flex;flex-direction:column;gap:36px;min-height:200px;box-sizing:border-box">
-<span style="font-size:13px;font-weight:600;color:#1B2F86">01</span>
+<div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:1px;background:rgba(26,52,71,0.16);border-top:1px solid rgba(26,52,71,0.16)">
+<div data-reveal="" style="background:#FAF4E7;padding:22px 16px 26px;display:flex;flex-direction:column;gap:36px;min-height:200px;box-sizing:border-box">
+<span style="font-size:13px;font-weight:600;color:#1A3447">01</span>
 <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-0.02em">A salesman who knows your shop</div>
-<p style="margin:8px 0 0;font-size:15px;line-height:1.55;color:rgba(27,47,134,0.74)">Provides salesman for modern and traditional market.</p></div>
+<p style="margin:8px 0 0;font-size:15px;line-height:1.55;color:rgba(26,52,71,0.74)">Provides salesman for modern and traditional market.</p></div>
 </div>
-<div data-reveal="" style="background:#F4EFE4;padding:22px 16px 26px;display:flex;flex-direction:column;gap:36px;min-height:200px;box-sizing:border-box">
-<span style="font-size:13px;font-weight:600;color:#1B2F86">02</span>
+<div data-reveal="" style="background:#FAF4E7;padding:22px 16px 26px;display:flex;flex-direction:column;gap:36px;min-height:200px;box-sizing:border-box">
+<span style="font-size:13px;font-weight:600;color:#1A3447">02</span>
 <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-0.02em">On your shelf within three days</div>
-<p style="margin:8px 0 0;font-size:15px;line-height:1.55;color:rgba(27,47,134,0.74)">3x24 hour maximum delivery to customer.</p></div>
+<p style="margin:8px 0 0;font-size:15px;line-height:1.55;color:rgba(26,52,71,0.74)">3x24 hour maximum delivery to customer.</p></div>
 </div>
-<div data-reveal="" style="background:#F4EFE4;padding:22px 16px 26px;display:flex;flex-direction:column;gap:36px;min-height:200px;box-sizing:border-box">
-<span style="font-size:13px;font-weight:600;color:#1B2F86">03</span>
+<div data-reveal="" style="background:#FAF4E7;padding:22px 16px 26px;display:flex;flex-direction:column;gap:36px;min-height:200px;box-sizing:border-box">
+<span style="font-size:13px;font-weight:600;color:#1A3447">03</span>
 <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-0.02em">Always the freshest stock first</div>
-<p style="margin:8px 0 0;font-size:15px;line-height:1.55;color:rgba(27,47,134,0.74)">Assure FIFO (First in First out) of our products.</p></div>
+<p style="margin:8px 0 0;font-size:15px;line-height:1.55;color:rgba(26,52,71,0.74)">Assure FIFO (First in First out) of our products.</p></div>
 </div>
-<div data-reveal="" style="background:#F4EFE4;padding:22px 16px 26px;display:flex;flex-direction:column;gap:36px;min-height:200px;box-sizing:border-box">
-<span style="font-size:13px;font-weight:600;color:#1B2F86">04</span>
+<div data-reveal="" style="background:#FAF4E7;padding:22px 16px 26px;display:flex;flex-direction:column;gap:36px;min-height:200px;box-sizing:border-box">
+<span style="font-size:13px;font-weight:600;color:#1A3447">04</span>
 <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-0.02em">Delivery from Rp 150.000</div>
-<p style="margin:8px 0 0;font-size:15px;line-height:1.55;color:rgba(27,47,134,0.74)">Minimum purchase of Rp 150,000.00 within Jakarta, Tangerang, Depok, Bogor, Sukabumi, Cianjur Area.</p></div>
+<p style="margin:8px 0 0;font-size:15px;line-height:1.55;color:rgba(26,52,71,0.74)">Minimum purchase of Rp 150,000.00 within Jakarta, Tangerang, Depok, Bogor, Sukabumi, Cianjur Area.</p></div>
 </div>
 </div>
 </section>
 
-<section id="areas" data-screen-label="Where we deliver" style="border-bottom:1px solid rgba(27,47,134,0.16)">
+<section id="areas" data-screen-label="Where we deliver" style="border-bottom:1px solid rgba(26,52,71,0.16)">
 <div style="max-width:1200px;margin:0 auto;padding:56px 16px 32px">
-<div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1B2F86">04 · Where we deliver</div>
+<div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1A3447">04 · Where we deliver</div>
 <h2 data-reveal="" style="margin:14px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(34px,8.5vw,60px);line-height:1;letter-spacing:-0.03em;max-width:16ch">One family, three teams, all of Greater Jakarta.</h2>
 </div>
-<div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1px;background:rgba(27,47,134,0.16);border-top:1px solid rgba(27,47,134,0.16);border-bottom:1px solid rgba(27,47,134,0.16)">
+<div style="max-width:1200px;margin:0 auto;padding:8px 12px 20px">
+<figure data-reveal="" style="margin:0;background:#FDFBF5;border-radius:var(--r-lg);padding:14px;box-shadow:var(--shadow-sm);overflow:hidden">
+<div id="hm-leaflet" style="position:relative;border-radius:var(--r-md);overflow:hidden;aspect-ratio:16/10;background:#F0E6D2;z-index:1"></div>
+<figcaption style="display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:12px;padding:0 4px;font-size:13px;color:rgba(26,52,71,0.75)">
+<span style="font-weight:600;color:#1A3447">5 warehouses</span>
+<span>Across Jakarta, Bogor, Cimandala &amp; Cianjur</span>
+<a href="https://www.google.com/maps/search/Harum+Mandiri+Jakarta/@-6.4,106.9,10z" target="_blank" rel="noopener" style="margin-left:auto;font-weight:600;color:#E8653A">Open in Google Maps →</a>
+</figcaption>
+</figure>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding:0 4px">
 <sc-for list="{{ entities }}" as="e" hint-placeholder-count="3">
-<button onClick="{{ e.select }}" style="font:inherit;font-size:14px;font-weight:600;line-height:1.3;min-height:64px;padding:12px 14px;border:0;cursor:pointer;text-align:left;background:{{ e.bg }};color:{{ e.color }};transition:background .2s,color .2s">{{ e.area }}</button>
+<button onClick="{{ e.select }}" style="font:inherit;font-size:13px;font-weight:600;padding:10px 16px;border:1px solid rgba(26,52,71,0.14);border-radius:999px;cursor:pointer;background:{{ e.bg }};color:{{ e.color }};transition:background .2s,color .2s">{{ e.area }}</button>
 </sc-for>
+</div>
 </div>
 <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))">
 <div style="padding:24px 16px 28px">
 <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:26px;line-height:1.1;letter-spacing:-0.02em">{{ entity.name }}</div>
-<div style="margin-top:6px;font-size:15px;line-height:1.55;color:rgba(27,47,134,0.74)">{{ entity.coverage }}</div>
-<div style="margin-top:24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(27,47,134,0.16)">
+<div style="margin-top:6px;font-size:15px;line-height:1.55;color:rgba(26,52,71,0.74)">{{ entity.coverage }}</div>
+<div style="margin-top:24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(26,52,71,0.16)">
 <div style="padding:14px 12px 0 0">
-<div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:36px;line-height:1;letter-spacing:-0.03em;color:#1B2F86">{{ entity.people }}</div>
-<div style="margin-top:6px;font-size:13px;line-height:1.35;color:rgba(27,47,134,0.72)">sales team</div>
+<div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:36px;line-height:1;letter-spacing:-0.03em;color:#1A3447">{{ entity.people }}</div>
+<div style="margin-top:6px;font-size:13px;line-height:1.35;color:rgba(26,52,71,0.72)">sales team</div>
 </div>
-<div style="padding:14px 12px 0;border-left:1px solid rgba(27,47,134,0.16)">
+<div style="padding:14px 12px 0;border-left:1px solid rgba(26,52,71,0.16)">
 <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:36px;line-height:1;letter-spacing:-0.03em">{{ entity.trucks }}</div>
-<div style="margin-top:6px;font-size:13px;line-height:1.35;color:rgba(27,47,134,0.72)">trucks</div>
+<div style="margin-top:6px;font-size:13px;line-height:1.35;color:rgba(26,52,71,0.72)">trucks</div>
 </div>
-<div style="padding:14px 0 0 12px;border-left:1px solid rgba(27,47,134,0.16)">
+<div style="padding:14px 0 0 12px;border-left:1px solid rgba(26,52,71,0.16)">
 <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:36px;line-height:1;letter-spacing:-0.03em">{{ entity.outlets }}</div>
-<div style="margin-top:6px;font-size:13px;line-height:1.35;color:rgba(27,47,134,0.72)">outlets</div>
+<div style="margin-top:6px;font-size:13px;line-height:1.35;color:rgba(26,52,71,0.72)">outlets</div>
 </div>
 </div>
-<div style="margin-top:16px;font-size:13px;line-height:1.5;color:rgba(27,47,134,0.68)">{{ entity.sales }}</div>
+<div style="margin-top:16px;font-size:13px;line-height:1.5;color:rgba(26,52,71,0.68)">{{ entity.sales }}</div>
 </div>
-<div style="display:flex;flex-direction:column;justify-content:flex-end;border-top:1px solid rgba(27,47,134,0.16)">
-<a href="{{ entity.tel }}" style="min-height:60px;background:#F2C14E;color:#1B2F86;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-weight:600;font-size:15px" style-hover="background:#1B2F86;color:#F4EFE4"><span>Call</span><span>{{ entity.phone }}</span></a>
-<a href="{{ entity.mailto }}" style="min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;font-weight:600;font-size:15px" style-hover="background:#EAE3D2;color:#1B2F86"><span>Email</span><span style="word-break:break-all;text-align:right">{{ entity.email }}</span></a>
+<div style="display:flex;flex-direction:column;justify-content:flex-end;border-top:1px solid rgba(26,52,71,0.16)">
+<a href="{{ entity.tel }}" style="min-height:60px;background:#E8653A;color:#1A3447;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-weight:600;font-size:15px" style-hover="background:#1A3447;color:#FAF4E7"><span>Call</span><span>{{ entity.phone }}</span></a>
+<a href="{{ entity.mailto }}" style="min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;font-weight:600;font-size:15px" style-hover="background:#F0E6D2;color:#1A3447"><span>Email</span><span style="word-break:break-all;text-align:right">{{ entity.email }}</span></a>
 </div>
 </div>
 </section>
 
-<section id="contact" data-screen-label="Contact" style="background:#F2C14E;color:#1B2F86">
+<section id="contact" data-screen-label="Contact" style="background:#E8653A;color:#1A3447">
 <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))">
 <div style="padding:56px 16px 36px">
 <div style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase">05 · Talk to us</div>
 <h2 data-reveal="" style="margin:14px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(38px,10vw,72px);line-height:0.98;letter-spacing:-0.035em;max-width:13ch">Want our products on your shelf?</h2>
 <p data-reveal="" style="margin:18px 0 0;font-size:16px;line-height:1.55;max-width:38ch">Call the office or send us an email. We’ll connect you with the salesman for your area.</p>
 </div>
-<div style="display:flex;flex-direction:column;justify-content:flex-end;border-top:1px solid rgba(27,47,134,0.25)">
-<a href="tel:+62217202705" style="min-height:64px;background:#1B2F86;color:#F4EFE4;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-weight:600;font-size:16px" style-hover="background:#2A43A8;color:#1B2F86"><span>Office</span><span>+62 21 7202705-6</span></a>
-<a href="mailto:Moderntrade@harummandiri.net" style="min-height:64px;color:#1B2F86;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;font-weight:600;font-size:15px;border-bottom:1px solid rgba(27,47,134,0.25)" style-hover="background:#1B2F86;color:#F4EFE4"><span>Email</span><span style="word-break:break-all;text-align:right">Moderntrade@harummandiri.net</span></a>
+<div style="display:flex;flex-direction:column;justify-content:flex-end;border-top:1px solid rgba(26,52,71,0.25)">
+<a href="tel:+62217202705" style="min-height:64px;background:#1A3447;color:#FAF4E7;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-weight:600;font-size:16px" style-hover="background:#2A5273;color:#1A3447"><span>Office</span><span>+62 21 7202705-6</span></a>
+<a href="mailto:Moderntrade@harummandiri.net" style="min-height:64px;color:#1A3447;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;font-weight:600;font-size:15px;border-bottom:1px solid rgba(26,52,71,0.25)" style-hover="background:#1A3447;color:#FAF4E7"><span>Email</span><span style="word-break:break-all;text-align:right">Moderntrade@harummandiri.net</span></a>
 <div style="padding:18px 16px 24px;font-size:15px;line-height:1.55"><span style="font-weight:600">Visit</span><br>Jl. Tepekong No. 7G, Kebayoran Lama, Jakarta Selatan 12220<br>Monday–Friday, 08.00–17.00</div>
 </div>
 </div>
 </section>
 
-<footer style="max-width:1200px;margin:0 auto;padding:28px 16px 104px;display:flex;flex-direction:column;gap:12px;font-size:13px;line-height:1.5;color:rgba(27,47,134,0.7)">
-<span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:22px;letter-spacing:-0.02em;color:#1B2F86">Harum Mandiri</span>
+<footer style="max-width:1200px;margin:0 auto;padding:28px 16px 104px;display:flex;flex-direction:column;gap:12px;font-size:13px;line-height:1.5;color:rgba(26,52,71,0.7)">
+<span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:22px;letter-spacing:-0.02em;color:#1A3447">Harum Mandiri</span>
 <span>CV. Harum Mandiri · PT. Centra Rasa Harum · CV. Citra Harum Inti Maju</span>
-<a href="https://www.tokopedia.com/harummandiri" style="color:rgba(27,47,134,0.82)">Shop on Tokopedia →</a>
+<a href="https://www.tokopedia.com/harummandiri" style="color:rgba(26,52,71,0.82)">Shop on Tokopedia →</a>
 </footer>
 
 </main>
 
-<div style="position:fixed;left:0;right:0;bottom:0;z-index:25;background:#F4EFE4;border-top:1px solid rgba(27,47,134,0.16);padding:0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);transition:transform .3s cubic-bezier(.2,.8,.2,1);transform:{{ barTransform }}">
-<div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(27,47,134,0.16)">
-<a href="tel:+62217202705" style="height:56px;background:#F2C14E;color:#1B2F86;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px" style-hover="background:#1B2F86;color:#F4EFE4">Call</a>
-<a href="mailto:Moderntrade@harummandiri.net" style="height:56px;background:#F4EFE4;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px">Email</a>
-<a href="#contact" style="height:56px;background:#F4EFE4;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px">Visit</a>
-</div>
-</div>
+<!-- WhatsApp floating CTA — always visible, replaces old scroll-triggered bar.
+     TODO: swap wa.me number for the real WhatsApp mobile line. -->
+<a class="wa-fab" href="https://wa.me/62217202705?text=Halo%20Harum%20Mandiri%2C%20saya%20ingin%20bertanya." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+<svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 .5C7.44.5.5 7.44.5 16c0 2.82.74 5.56 2.14 7.98L.5 31.5l7.72-2.03A15.5 15.5 0 0 0 16 31.5c8.56 0 15.5-6.94 15.5-15.5S24.56.5 16 .5zm0 28.3c-2.46 0-4.86-.66-6.96-1.9l-.5-.3-4.58 1.2 1.22-4.46-.32-.52a12.8 12.8 0 1 1 11.14 5.98zm7.04-9.6c-.38-.2-2.26-1.12-2.6-1.24-.36-.14-.6-.2-.86.2s-1 1.24-1.22 1.5c-.22.26-.44.3-.82.1a10.44 10.44 0 0 1-3.08-1.9 11.6 11.6 0 0 1-2.14-2.66c-.22-.38 0-.58.18-.78.18-.18.4-.44.6-.66.2-.22.28-.38.42-.64.14-.26.08-.48 0-.68-.1-.2-.86-2.08-1.18-2.84-.3-.74-.62-.64-.86-.66h-.74c-.22 0-.6.08-.9.4a3.68 3.68 0 0 0-1.14 2.74c0 1.62 1.18 3.18 1.34 3.4.16.22 2.32 3.56 5.62 4.98.78.34 1.4.54 1.88.68.78.24 1.5.2 2.06.12.62-.1 1.92-.78 2.2-1.54.28-.76.28-1.4.2-1.54-.08-.14-.3-.22-.68-.4z"/></svg>
+<span class="wa-label">Chat on WhatsApp</span>
+</a>
 
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showProducts&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showTicker&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
-  state = { entity: 0, menu: false, bar: false };
+  state = { entity: 0, menu: false };
 
   componentDidMount() {
-    this._onScroll = () => {
-      const show = window.scrollY > window.innerHeight * 0.6;
-      if (show !== this.state.bar) this.setState({ bar: show });
-    };
-    window.addEventListener('scroll', this._onScroll, { passive: true });
-    this._onScroll();
+    this._initMap();
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!reduce) {
       const strips = Array.from(document.querySelectorAll('[data-strip]')).map(el => {
@@ -341,9 +383,72 @@ class Component extends DCLogic {
 
   componentWillUnmount() {
     cancelAnimationFrame(this._raf);
-    window.removeEventListener('scroll', this._onScroll);
     this._io && this._io.disconnect();
     this._cio && this._cio.disconnect();
+    this._map && this._map.remove();
+  }
+
+  _initMap() {
+    const el = document.getElementById('hm-leaflet');
+    if (!el) return;
+    if (!window.L) return setTimeout(() => this._initMap(), 120);
+    // OpenStreetMap default tiles — no API key, no sign-up.
+    // Capped to Greater Jakarta so the browser never fetches global tiles.
+    const bounds = L.latLngBounds([-7.00, 106.40], [-5.90, 107.30]);
+    const map = L.map(el, {
+      scrollWheelZoom: false, zoomControl: true,
+      minZoom: 9, maxZoom: 14,
+      maxBounds: bounds, maxBoundsViscosity: 1.0
+    }).fitBounds(bounds);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      bounds: bounds, minZoom: 9, maxZoom: 14
+    }).addTo(map);
+    const pin = (color) => L.divIcon({
+      className: 'hm-pin',
+      html: `<span style="display:block;width:18px;height:18px;border-radius:50%;background:${color};border:3px solid #FDFBF5;box-shadow:0 2px 8px rgba(26,52,71,0.35)"></span>`,
+      iconSize: [18, 18], iconAnchor: [9, 9], popupAnchor: [0, -10]
+    });
+    const T = '#E8653A', S = '#F2B544', I = '#1A3447';
+    const warehouses = [
+      { lat: -6.2435, lng: 106.7709, color: T, tag: 'CV. Harum Mandiri', tagBg: '#FBD1BE',
+        name: 'South Jakarta HQ', year: 'Est. 1988',
+        desc: 'Headquarters since 1988, when the warehouse moved here from Central Jakarta. Serves South &amp; West Jakarta and Tangerang.',
+        addr: 'Jl. Tepekong No. 7G, Kebayoran Lama', tel: '+62217202705', phoneDisplay: '+62 21 7202705-6' },
+      { lat: -6.1256, lng: 106.8778, color: I, tag: 'CV. Citra Harum Inti Maju', tagBg: '#C8D0D8',
+        name: 'North Jakarta office', year: 'Est. 1995',
+        desc: 'Opened as the third company to serve Central, East &amp; North Jakarta — markets, supermarkets and traditional trade.',
+        addr: 'Jakarta Utara', tel: '+62214405468', phoneDisplay: '+62 21 4405468-9' },
+      { lat: -6.5950, lng: 106.8167, color: S, tag: 'PT. Centra Rasa Harum', tagBg: '#FBE4B8',
+        name: 'Bogor branch', year: 'Est. 1991',
+        desc: 'Branch opened in Bogor to extend coverage to Depok, Sukabumi and Cianjur.',
+        addr: 'Bogor', tel: '+62251220851', phoneDisplay: '+62 251 220851-3' },
+      { lat: -6.5692, lng: 106.8172, color: S, tag: 'PT. Centra Rasa Harum', tagBg: '#FBE4B8',
+        name: 'Cimandala warehouse', year: 'Built 2011',
+        desc: 'A newer warehouse in Cimandala, Sukaraja — closer to Bogor retailers for faster three-day delivery.',
+        addr: 'Cimandala, Bogor Regency', tel: '+62251220851', phoneDisplay: '+62 251 220851-3' },
+      { lat: -6.8167, lng: 107.1417, color: S, tag: 'PT. Centra Rasa Harum', tagBg: '#FBE4B8',
+        name: 'Cianjur warehouse', year: 'Built 2017',
+        desc: 'The 2017 Cianjur warehouse brought FIFO stock within a day of eastern towns.',
+        addr: 'Cianjur', tel: '+62251220851', phoneDisplay: '+62 251 220851-3' },
+    ];
+    const group = L.featureGroup();
+    warehouses.forEach(w => {
+      const m = L.marker([w.lat, w.lng], { icon: pin(w.color) });
+      m.bindPopup(
+        `<span class="hm-pop-tag" style="background:${w.tagBg};color:${w.color}">${w.tag}</span>` +
+        `<h4>${w.name} <small style="opacity:0.6;font-weight:400">· ${w.year}</small></h4>` +
+        `<div style="margin-bottom:8px;color:rgba(26,52,71,0.78)">${w.desc}</div>` +
+        `<div style="color:rgba(26,52,71,0.72);font-size:12px">${w.addr}</div>` +
+        `<div style="margin-top:6px"><a href="tel:${w.tel}">${w.phoneDisplay}</a></div>`,
+        { maxWidth: 260 }
+      );
+      m.addTo(map); group.addLayer(m);
+    });
+    map.fitBounds(group.getBounds().pad(0.25), { maxZoom: 11 });
+    // enable scroll-zoom once user clicks the map (avoids hijacking page scroll)
+    map.once('click', () => map.scrollWheelZoom.enable());
+    this._map = map;
   }
 
   renderVals() {
@@ -368,17 +473,16 @@ class Component extends DCLogic {
       menuOpen: this.state.menu,
       toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
       closeMenu: () => this.setState({ menu: false }),
-      barTransform: this.state.bar ? 'translateY(0)' : 'translateY(110%)',
       stripSlots: [20,17,19,18,8,7,6,5,4,3,2].map(n => ({ id: 'strip-' + n })),
       milestones,
       products: [
-        { id: 'brands-wide', name: 'Butter Cookies', maker: 'Monde' },
-        { id: 'brands-sq-1', name: 'Crispy Crackers', maker: 'Nissin' },
-        { id: 'brands-sq-2', name: 'Assorted Biscuits', maker: 'Khong Guan' }
+        { id: 'brands-wide', name: 'Assorted Biscuits', maker: 'Khong Guan' },
+        { id: 'brands-sq-1', name: 'Malkist Crackers', maker: 'Khong Guan' },
+        { id: 'brands-sq-2', name: 'Mini Jelly', maker: 'Inaco' }
       ],
       principals: P.map(rest => ({ rest })),
       entities: E.map((e, k) => ({ ...e, select: () => this.setState({ entity: k }),
-        bg: k === i ? '#1B2F86' : '#F4EFE4', color: k === i ? '#F4EFE4' : '#1B2F86' })),
+        bg: k === i ? '#1A3447' : '#FAF4E7', color: k === i ? '#FAF4E7' : '#1A3447' })),
       entity: { ...ent, mailto: 'mailto:' + ent.email }
     };
   }
