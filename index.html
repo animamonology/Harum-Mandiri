@@ -263,7 +263,7 @@ section[data-screen-label]{border-bottom-color:rgba(26,52,71,0.08)!important}
 </div>
 <div style="max-width:1200px;margin:0 auto;padding:0 12px 32px">
 <figure data-reveal="" style="margin:0;background:#FDFBF5;border-radius:var(--r-lg);padding:14px;box-shadow:var(--shadow-sm);overflow:hidden">
-<div id="hm-leaflet" style="position:relative;border-radius:var(--r-md);overflow:hidden;aspect-ratio:16/10;background:#F0E6D2;z-index:1"></div>
+<div id="hm-map-rent" style="position:relative;border-radius:var(--r-md);overflow:hidden;aspect-ratio:16/10;background:#F0E6D2;z-index:1"></div>
 <figcaption style="display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:12px;padding:0 4px;font-size:13px;color:rgba(26,52,71,0.75)">
 <span style="font-weight:600;color:#1A3447">4 warehouses for rent</span>
 <span>Pondok Aren · Lenteng Agung · Pulogadung · Karang Satria</span>
@@ -277,8 +277,16 @@ section[data-screen-label]{border-bottom-color:rgba(26,52,71,0.08)!important}
 <div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1A3447">05 · Where we deliver</div>
 <h2 data-reveal="" style="margin:14px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(34px,8.5vw,60px);line-height:1;letter-spacing:-0.03em;max-width:16ch">One family, three teams, all of Greater Jakarta.</h2>
 </div>
-<div style="max-width:1200px;margin:0 auto;padding:0 12px 20px">
-<div style="display:flex;flex-wrap:wrap;gap:8px;padding:0 4px">
+<div style="max-width:1200px;margin:0 auto;padding:8px 12px 20px">
+<figure data-reveal="" style="margin:0;background:#FDFBF5;border-radius:var(--r-lg);padding:14px;box-shadow:var(--shadow-sm);overflow:hidden">
+<div id="hm-map-dist" style="position:relative;border-radius:var(--r-md);overflow:hidden;aspect-ratio:16/10;background:#F0E6D2;z-index:1"></div>
+<figcaption style="display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:12px;padding:0 4px;font-size:13px;color:rgba(26,52,71,0.75)">
+<span style="font-weight:600;color:#1A3447">5 sites</span>
+<span>Across Tangerang, Jakarta, Bogor, Cimandala &amp; Cianjur</span>
+<a href="https://www.google.com/maps/search/Harum+Mandiri+Jakarta/@-6.4,106.9,10z" target="_blank" rel="noopener" style="margin-left:auto;font-weight:600;color:#E8653A">Open in Google Maps →</a>
+</figcaption>
+</figure>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding:0 4px">
 <sc-for list="{{ entities }}" as="e" hint-placeholder-count="3">
 <button onClick="{{ e.select }}" style="font:inherit;font-size:13px;font-weight:600;padding:10px 16px;border:1px solid rgba(26,52,71,0.14);border-radius:999px;cursor:pointer;background:{{ e.bg }};color:{{ e.color }};transition:background .2s,color .2s">{{ e.area }}</button>
 </sc-for>
@@ -412,13 +420,54 @@ class Component extends DCLogic {
     cancelAnimationFrame(this._raf);
     this._io && this._io.disconnect();
     this._cio && this._cio.disconnect();
-    this._map && this._map.remove();
+    (this._maps || []).forEach(m => m.remove());
   }
 
   _initMap() {
-    const el = document.getElementById('hm-leaflet');
-    if (!el) return;
     if (!window.L) return setTimeout(() => this._initMap(), 120);
+    const T = '#E8653A', S = '#F2B544', I = '#1A3447';
+    const pop = (w) =>
+      `<span class="hm-pop-tag" style="background:${w.tagBg};color:${w.color}">${w.tag}</span>` +
+      `<h4>${w.name}${w.year ? ` <small style="opacity:0.6;font-weight:400">· ${w.year}</small>` : ''}</h4>` +
+      `<div style="margin-bottom:8px;color:rgba(26,52,71,0.78)">${w.desc}</div>` + w.foot;
+    // Distribution business: offices and warehouses of the three companies.
+    const dist = [
+      { lat: -6.2735, lng: 106.7140, color: T, tag: 'CV. Harum Mandiri', tagBg: '#FBD1BE',
+        name: 'Pondok Aren head office', year: 'Est. 1988',
+        desc: 'Serves South &amp; West Jakarta and Tangerang.',
+        addr: 'Jl. Jombang Raya No. 56, Pondok Aren', tel: '+62217202705', phoneDisplay: '+62 21 7202705-6' },
+      { lat: -6.1256, lng: 106.8778, color: I, tag: 'CV. Citra Harum Inti Maju', tagBg: '#C8D0D8',
+        name: 'North Jakarta office', year: 'Est. 1995',
+        desc: 'Opened as the third company to serve Central, East &amp; North Jakarta — markets, supermarkets and traditional trade.',
+        addr: 'Jakarta Utara', tel: '+62214405468', phoneDisplay: '+62 21 4405468-9' },
+      { lat: -6.5950, lng: 106.8167, color: S, tag: 'PT. Centra Rasa Harum', tagBg: '#FBE4B8',
+        name: 'Bogor branch', year: 'Est. 1991',
+        desc: 'Branch opened in Bogor to extend coverage to Depok, Sukabumi and Cianjur.',
+        addr: 'Bogor', tel: '+62251220851', phoneDisplay: '+62 251 220851-3' },
+      { lat: -6.5692, lng: 106.8172, color: S, tag: 'PT. Centra Rasa Harum', tagBg: '#FBE4B8',
+        name: 'Cimandala warehouse', year: 'Built 2011',
+        desc: 'A newer warehouse in Cimandala, Sukaraja — closer to Bogor retailers for faster three-day delivery.',
+        addr: 'Cimandala, Bogor Regency', tel: '+62251220851', phoneDisplay: '+62 251 220851-3' },
+      { lat: -6.8167, lng: 107.1417, color: S, tag: 'PT. Centra Rasa Harum', tagBg: '#FBE4B8',
+        name: 'Cianjur warehouse', year: 'Built 2017',
+        desc: 'The 2017 Cianjur warehouse brought FIFO stock within a day of eastern towns.',
+        addr: 'Cianjur', tel: '+62251220851', phoneDisplay: '+62 251 220851-3' }
+    ].map(w => ({ ...w, foot:
+      `<div style="color:rgba(26,52,71,0.72);font-size:12px">${w.addr}</div>` +
+      `<div style="margin-top:6px"><a href="tel:${w.tel}">${w.phoneDisplay}</a></div>` }));
+    // Warehouse rental business: same list as the rental cards.
+    const rent = this._rentals().map(w => ({ ...w, color: T, tag: 'For rent', tagBg: '#FBD1BE',
+      desc: `${w.city}<br>${w.sizes}`,
+      foot: `<a href="${w.wa}" target="_blank" rel="noopener">Ask on WhatsApp →</a>` }));
+    this._maps = [
+      this._makeMap('hm-map-dist', dist.map(w => ({ ...w, html: pop(w) }))),
+      this._makeMap('hm-map-rent', rent.map(w => ({ ...w, html: pop(w) })))
+    ].filter(Boolean);
+  }
+
+  _makeMap(id, points) {
+    const el = document.getElementById(id);
+    if (!el) return null;
     // OpenStreetMap default tiles — no API key, no sign-up.
     // Capped to Greater Jakarta so the browser never fetches global tiles.
     const bounds = L.latLngBounds([-7.00, 106.40], [-5.90, 107.30]);
@@ -437,21 +486,15 @@ class Component extends DCLogic {
       iconSize: [18, 18], iconAnchor: [9, 9], popupAnchor: [0, -10]
     });
     const group = L.featureGroup();
-    this._rentals().forEach(w => {
-      const m = L.marker([w.lat, w.lng], { icon: pin('#E8653A') });
-      m.bindPopup(
-        `<span class="hm-pop-tag" style="background:#FBD1BE;color:#E8653A">For rent</span>` +
-        `<h4>${w.name}</h4>` +
-        `<div style="margin-bottom:8px;color:rgba(26,52,71,0.78)">${w.city}<br>${w.sizes}</div>` +
-        `<a href="${w.wa}" target="_blank" rel="noopener">Ask on WhatsApp →</a>`,
-        { maxWidth: 260 }
-      );
+    points.forEach(w => {
+      const m = L.marker([w.lat, w.lng], { icon: pin(w.color) });
+      m.bindPopup(w.html, { maxWidth: 260 });
       m.addTo(map); group.addLayer(m);
     });
     map.fitBounds(group.getBounds().pad(0.25), { maxZoom: 11 });
     // enable scroll-zoom once user clicks the map (avoids hijacking page scroll)
     map.once('click', () => map.scrollWheelZoom.enable());
-    this._map = map;
+    return map;
   }
 
   // Warehouse rental sites — feeds both the cards and the map pins.
