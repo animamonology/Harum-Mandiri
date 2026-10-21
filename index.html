@@ -9,8 +9,8 @@
 <meta property="og:title" content="Harum Mandiri — biscuits on every shelf in Jakarta">
 <meta property="og:description" content="Food & snacks distributor serving Greater Jakarta since 1970.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="./assets/warehouse.webp">
-<link rel="preload" as="image" href="./assets/warehouse.webp" fetchpriority="high">
+<meta property="og:image" content="./assets/rent/unit-d.jpg">
+<link rel="preload" as="image" href="./assets/rent/unit-d.jpg" fetchpriority="high">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -63,6 +63,10 @@ section[data-screen-label]{border-bottom-color:rgba(26,52,71,0.08)!important}
 .leaflet-popup-tip{background:#FDFBF5!important}
 .leaflet-container{font-family:'Instrument Sans',sans-serif!important;background:#F0E6D2!important}
 .leaflet-control-attribution{font-size:10px!important;background:rgba(253,251,245,0.9)!important}
+/* 4 rental cards: 1 / 2 / 4 columns so none is left alone on a row */
+.rent-grid{grid-template-columns:1fr}
+@media (min-width:560px){.rent-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1000px){.rent-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .wa-fab .wa-label{display:inline}
 @media (max-width:420px){.wa-fab .wa-label{display:none}.wa-fab{padding:0;width:56px;justify-content:center}}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
@@ -96,8 +100,9 @@ section[data-screen-label]{border-bottom-color:rgba(26,52,71,0.08)!important}
 <a href="#story" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(26,52,71,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Our story</span><span style="font-size:13px;color:#1A3447">01</span></a>
 <a href="#brands" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(26,52,71,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Brands</span><span style="font-size:13px;color:#1A3447">02</span></a>
 <a href="#promise" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(26,52,71,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>How we work</span><span style="font-size:13px;color:#1A3447">03</span></a>
-<a href="#areas" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(26,52,71,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Where we deliver</span><span style="font-size:13px;color:#1A3447">04</span></a>
-<a href="#contact" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;background:#E8653A;color:#1A3447;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Talk to us</span><span style="font-size:13px">05</span></a>
+<a href="#rent" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(26,52,71,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Warehouse for rent</span><span style="font-size:13px;color:#1A3447">04</span></a>
+<a href="#areas" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;border-bottom:1px solid rgba(26,52,71,0.16);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Where we deliver</span><span style="font-size:13px;color:#1A3447">05</span></a>
+<a href="#contact" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;padding:22px 16px;background:#E8653A;color:#1A3447;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;letter-spacing:-0.02em"><span>Talk to us</span><span style="font-size:13px">06</span></a>
 </nav>
 <div style="margin-top:auto;padding:24px 16px 32px;font-size:15px;line-height:1.6;color:rgba(26,52,71,0.74)">+62 21 7202705-6<br>Moderntrade@harummandiri.net</div>
 </div>
@@ -113,7 +118,7 @@ section[data-screen-label]{border-bottom-color:rgba(26,52,71,0.08)!important}
 <p data-reveal="" data-delay="160" style="margin:18px 0 0;font-size:16px;line-height:1.6;color:rgba(26,52,71,0.78);max-width:42ch;text-wrap:pretty">Distributing since 1970, when Khong Guan Biscuit first arrived in Indonesia. Our trucks leave the warehouse every morning.</p>
 </div>
 <div style="position:relative;aspect-ratio:4/3;background:#F0E6D2;min-height:100%">
-<image-slot id="hero-bg" shape="rect" src="./assets/warehouse.webp" placeholder="Photo: warehouse or trucks"></image-slot>
+<image-slot id="hero-bg" shape="rect" src="./assets/rent/unit-d.jpg" placeholder="Photo: warehouse or trucks"></image-slot>
 </div>
 </div>
 <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid rgba(26,52,71,0.16)">
@@ -237,21 +242,43 @@ section[data-screen-label]{border-bottom-color:rgba(26,52,71,0.08)!important}
 </div>
 </section>
 
-<section id="areas" data-screen-label="Where we deliver" style="border-bottom:1px solid rgba(26,52,71,0.16)">
+<section id="rent" data-screen-label="Warehouse rental" style="border-bottom:1px solid rgba(26,52,71,0.16)">
 <div style="max-width:1200px;margin:0 auto;padding:56px 16px 32px">
-<div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1A3447">04 · Where we deliver</div>
-<h2 data-reveal="" style="margin:14px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(34px,8.5vw,60px);line-height:1;letter-spacing:-0.03em;max-width:16ch">One family, three teams, all of Greater Jakarta.</h2>
+<div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1A3447">04 · Warehouse for rent</div>
+<h2 data-reveal="" style="margin:14px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(34px,8.5vw,60px);line-height:1;letter-spacing:-0.03em;max-width:16ch">Warehouse space, from Tangerang to Bekasi.</h2>
+<p data-reveal="" style="margin:16px 0 0;font-size:16px;line-height:1.6;color:rgba(26,52,71,0.78);max-width:42ch">Four locations, from 18 × 18 m up to 48 × 48 m. Message us to check which units are free.</p>
 </div>
-<div style="max-width:1200px;margin:0 auto;padding:8px 12px 20px">
+<div class="rent-grid" style="max-width:1200px;margin:0 auto;display:grid;gap:12px;padding:0 12px 20px">
+<sc-for list="{{ rentals }}" as="r" hint-placeholder-count="4">
+<article data-reveal="" style="background:#FDFBF5;border-radius:var(--r-md);box-shadow:var(--shadow-sm);overflow:hidden;display:flex;flex-direction:column">
+<img src="{{ r.photo }}" alt="{{ r.alt }}" loading="lazy" width="1600" height="1200" style="display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:#F0E6D2">
+<div style="padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1">
+<div style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(26,52,71,0.6)">{{ r.city }}</div>
+<div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-0.02em">{{ r.name }}</div>
+<div style="font-size:15px;line-height:1.5;color:rgba(26,52,71,0.78)">{{ r.sizes }}</div>
+<a href="{{ r.wa }}" target="_blank" rel="noopener" style="margin-top:auto;padding-top:12px;font-weight:600;font-size:15px;color:#E8653A">Ask about this space →</a>
+</div>
+</article>
+</sc-for>
+</div>
+<div style="max-width:1200px;margin:0 auto;padding:0 12px 32px">
 <figure data-reveal="" style="margin:0;background:#FDFBF5;border-radius:var(--r-lg);padding:14px;box-shadow:var(--shadow-sm);overflow:hidden">
 <div id="hm-leaflet" style="position:relative;border-radius:var(--r-md);overflow:hidden;aspect-ratio:16/10;background:#F0E6D2;z-index:1"></div>
 <figcaption style="display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:12px;padding:0 4px;font-size:13px;color:rgba(26,52,71,0.75)">
-<span style="font-weight:600;color:#1A3447">5 warehouses</span>
-<span>Across Jakarta, Bogor, Cimandala &amp; Cianjur</span>
-<a href="https://www.google.com/maps/search/Harum+Mandiri+Jakarta/@-6.4,106.9,10z" target="_blank" rel="noopener" style="margin-left:auto;font-weight:600;color:#E8653A">Open in Google Maps →</a>
+<span style="font-weight:600;color:#1A3447">4 warehouses for rent</span>
+<span>Pondok Aren · Lenteng Agung · Pulogadung · Karang Satria</span>
 </figcaption>
 </figure>
-<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding:0 4px">
+</div>
+</section>
+
+<section id="areas" data-screen-label="Where we deliver" style="border-bottom:1px solid rgba(26,52,71,0.16)">
+<div style="max-width:1200px;margin:0 auto;padding:56px 16px 32px">
+<div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#1A3447">05 · Where we deliver</div>
+<h2 data-reveal="" style="margin:14px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(34px,8.5vw,60px);line-height:1;letter-spacing:-0.03em;max-width:16ch">One family, three teams, all of Greater Jakarta.</h2>
+</div>
+<div style="max-width:1200px;margin:0 auto;padding:0 12px 20px">
+<div style="display:flex;flex-wrap:wrap;gap:8px;padding:0 4px">
 <sc-for list="{{ entities }}" as="e" hint-placeholder-count="3">
 <button onClick="{{ e.select }}" style="font:inherit;font-size:13px;font-weight:600;padding:10px 16px;border:1px solid rgba(26,52,71,0.14);border-radius:999px;cursor:pointer;background:{{ e.bg }};color:{{ e.color }};transition:background .2s,color .2s">{{ e.area }}</button>
 </sc-for>
@@ -287,14 +314,14 @@ section[data-screen-label]{border-bottom-color:rgba(26,52,71,0.08)!important}
 <section id="contact" data-screen-label="Contact" style="background:#E8653A;color:#1A3447">
 <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))">
 <div style="padding:56px 16px 36px">
-<div style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase">05 · Talk to us</div>
+<div style="font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase">06 · Talk to us</div>
 <h2 data-reveal="" style="margin:14px 0 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(38px,10vw,72px);line-height:0.98;letter-spacing:-0.035em;max-width:13ch">Want our products on your shelf?</h2>
 <p data-reveal="" style="margin:18px 0 0;font-size:16px;line-height:1.55;max-width:38ch">Call the office or send us an email. We’ll connect you with the salesman for your area.</p>
 </div>
 <div style="display:flex;flex-direction:column;justify-content:flex-end;border-top:1px solid rgba(26,52,71,0.25)">
 <a href="tel:+62217202705" style="min-height:64px;background:#1A3447;color:#FAF4E7;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-weight:600;font-size:16px" style-hover="background:#2A5273;color:#1A3447"><span>Office</span><span>+62 21 7202705-6</span></a>
 <a href="mailto:Moderntrade@harummandiri.net" style="min-height:64px;color:#1A3447;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;font-weight:600;font-size:15px;border-bottom:1px solid rgba(26,52,71,0.25)" style-hover="background:#1A3447;color:#FAF4E7"><span>Email</span><span style="word-break:break-all;text-align:right">Moderntrade@harummandiri.net</span></a>
-<div style="padding:18px 16px 24px;font-size:15px;line-height:1.55"><span style="font-weight:600">Visit</span><br>Jl. Tepekong No. 7G, Kebayoran Lama, Jakarta Selatan 12220<br>Monday–Friday, 08.00–17.00</div>
+<div style="padding:18px 16px 24px;font-size:15px;line-height:1.55"><span style="font-weight:600">Visit</span><br>Jl. Jombang Raya No. 56, Pd. Kacang Timur, Pondok Aren, Tangerang Selatan, Banten 15226<br>Monday–Friday, 08.00–17.00</div>
 </div>
 </div>
 </section>
@@ -409,38 +436,14 @@ class Component extends DCLogic {
       html: `<span style="display:block;width:18px;height:18px;border-radius:50%;background:${color};border:3px solid #FDFBF5;box-shadow:0 2px 8px rgba(26,52,71,0.35)"></span>`,
       iconSize: [18, 18], iconAnchor: [9, 9], popupAnchor: [0, -10]
     });
-    const T = '#E8653A', S = '#F2B544', I = '#1A3447';
-    const warehouses = [
-      { lat: -6.2435, lng: 106.7709, color: T, tag: 'CV. Harum Mandiri', tagBg: '#FBD1BE',
-        name: 'South Jakarta HQ', year: 'Est. 1988',
-        desc: 'Headquarters since 1988, when the warehouse moved here from Central Jakarta. Serves South &amp; West Jakarta and Tangerang.',
-        addr: 'Jl. Tepekong No. 7G, Kebayoran Lama', tel: '+62217202705', phoneDisplay: '+62 21 7202705-6' },
-      { lat: -6.1256, lng: 106.8778, color: I, tag: 'CV. Citra Harum Inti Maju', tagBg: '#C8D0D8',
-        name: 'North Jakarta office', year: 'Est. 1995',
-        desc: 'Opened as the third company to serve Central, East &amp; North Jakarta — markets, supermarkets and traditional trade.',
-        addr: 'Jakarta Utara', tel: '+62214405468', phoneDisplay: '+62 21 4405468-9' },
-      { lat: -6.5950, lng: 106.8167, color: S, tag: 'PT. Centra Rasa Harum', tagBg: '#FBE4B8',
-        name: 'Bogor branch', year: 'Est. 1991',
-        desc: 'Branch opened in Bogor to extend coverage to Depok, Sukabumi and Cianjur.',
-        addr: 'Bogor', tel: '+62251220851', phoneDisplay: '+62 251 220851-3' },
-      { lat: -6.5692, lng: 106.8172, color: S, tag: 'PT. Centra Rasa Harum', tagBg: '#FBE4B8',
-        name: 'Cimandala warehouse', year: 'Built 2011',
-        desc: 'A newer warehouse in Cimandala, Sukaraja — closer to Bogor retailers for faster three-day delivery.',
-        addr: 'Cimandala, Bogor Regency', tel: '+62251220851', phoneDisplay: '+62 251 220851-3' },
-      { lat: -6.8167, lng: 107.1417, color: S, tag: 'PT. Centra Rasa Harum', tagBg: '#FBE4B8',
-        name: 'Cianjur warehouse', year: 'Built 2017',
-        desc: 'The 2017 Cianjur warehouse brought FIFO stock within a day of eastern towns.',
-        addr: 'Cianjur', tel: '+62251220851', phoneDisplay: '+62 251 220851-3' },
-    ];
     const group = L.featureGroup();
-    warehouses.forEach(w => {
-      const m = L.marker([w.lat, w.lng], { icon: pin(w.color) });
+    this._rentals().forEach(w => {
+      const m = L.marker([w.lat, w.lng], { icon: pin('#E8653A') });
       m.bindPopup(
-        `<span class="hm-pop-tag" style="background:${w.tagBg};color:${w.color}">${w.tag}</span>` +
-        `<h4>${w.name} <small style="opacity:0.6;font-weight:400">· ${w.year}</small></h4>` +
-        `<div style="margin-bottom:8px;color:rgba(26,52,71,0.78)">${w.desc}</div>` +
-        `<div style="color:rgba(26,52,71,0.72);font-size:12px">${w.addr}</div>` +
-        `<div style="margin-top:6px"><a href="tel:${w.tel}">${w.phoneDisplay}</a></div>`,
+        `<span class="hm-pop-tag" style="background:#FBD1BE;color:#E8653A">For rent</span>` +
+        `<h4>${w.name}</h4>` +
+        `<div style="margin-bottom:8px;color:rgba(26,52,71,0.78)">${w.city}<br>${w.sizes}</div>` +
+        `<a href="${w.wa}" target="_blank" rel="noopener">Ask on WhatsApp →</a>`,
         { maxWidth: 260 }
       );
       m.addTo(map); group.addLayer(m);
@@ -449,6 +452,25 @@ class Component extends DCLogic {
     // enable scroll-zoom once user clicks the map (avoids hijacking page scroll)
     map.once('click', () => map.scrollWheelZoom.enable());
     this._map = map;
+  }
+
+  // Warehouse rental sites — feeds both the cards and the map pins.
+  // ponytail: lat/lng are area-level approximations (neighbourhood centre), fine at map zoom 11; swap in exact points if pins need to sit on the building.
+  // Photo-to-site mapping is a guess from the WhatsApp batch (lettered units D–H are one estate) — confirm with the client.
+  _rentals() {
+    const sz = (w, l) => `${w} × ${l} m (${(w * l).toLocaleString('en-US')} m²)`;
+    const wa = (name) => 'https://wa.me/62217202705?text=' +
+      encodeURIComponent(`Halo Harum Mandiri, saya tertarik sewa gudang di ${name}. Apakah masih tersedia?`);
+    return [
+      { name: 'Pondok Aren', city: 'Tangerang', sizes: sz(18, 18), lat: -6.2735, lng: 106.7140,
+        photo: './assets/rent/unit-h.jpg', alt: 'Two-storey warehouse with office front, Pondok Aren' },
+      { name: 'Lenteng Agung', city: 'South Jakarta', sizes: sz(24, 24), lat: -6.3305, lng: 106.8340,
+        photo: './assets/rent/street-lenteng-agung.jpg', alt: 'Gated warehouse entrance, Lenteng Agung' },
+      { name: 'Pulogadung', city: 'East Jakarta', sizes: sz(48, 48), lat: -6.1930, lng: 106.9000,
+        photo: './assets/rent/street-pulogadung.jpg', alt: 'Warehouse yard entrance, Pulogadung' },
+      { name: 'Karang Satria', city: 'East Bekasi', sizes: sz(18, 18) + ' · ' + sz(24, 30), lat: -6.2180, lng: 107.0430,
+        photo: './assets/rent/unit-g.jpg', alt: 'Warehouse unit with loading canopy, Karang Satria' }
+    ].map(r => ({ ...r, wa: wa(r.name) }));
   }
 
   renderVals() {
@@ -475,6 +497,7 @@ class Component extends DCLogic {
       closeMenu: () => this.setState({ menu: false }),
       stripSlots: [20,17,19,18,8,7,6,5,4,3,2].map(n => ({ id: 'strip-' + n })),
       milestones,
+      rentals: this._rentals(),
       products: [
         { id: 'brands-wide', name: 'Assorted Biscuits', maker: 'Khong Guan' },
         { id: 'brands-sq-1', name: 'Malkist Crackers', maker: 'Khong Guan' },
